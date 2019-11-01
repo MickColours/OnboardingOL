@@ -1,0 +1,14 @@
+USE `Asrcoo`;
+DROP procedure IF EXISTS `delete_user`;
+
+DELIMITER $$
+USE `Asrcoo`$$
+CREATE PROCEDURE `delete_user` (IN thisUserId Int)
+BEGIN
+	delete FROM Asrcoo.user 
+	where user_id = thisUserId;
+END$$
+
+DELIMITER ;
+
+

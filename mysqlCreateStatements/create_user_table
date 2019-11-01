@@ -1,0 +1,10 @@
+CREATE TABLE `Asrcoo`.`user` (
+  `user_id` INT NOT NULL AUTO_INCREMENT,
+  `user_name` VARCHAR(45) NOT NULL,
+  `authentication_string` VARCHAR(45) NOT NULL,
+  `privilege` INT NOT NULL,
+  PRIMARY KEY (`user_id`),
+  UNIQUE INDEX `user_id_UNIQUE` (`user_id` ASC) VISIBLE,
+  UNIQUE INDEX `user_name_UNIQUE` (`user_name` ASC) VISIBLE);
+
+

@@ -1,0 +1,15 @@
+USE `Asrcoo`;
+DROP procedure IF EXISTS `get_user_privilege`;
+
+DELIMITER $$
+USE `Asrcoo`$$
+CREATE PROCEDURE `get_user_privilege` (thisUsername varchar(45))
+BEGIN
+	#get the priviliege level of the user with thisUsername
+	select privilege
+    from Asrcoo.user u
+    where thisUsername = u.user_name;
+END$$
+
+DELIMITER ;
+

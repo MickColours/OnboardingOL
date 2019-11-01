@@ -1,0 +1,65 @@
+//
+
+ALL PRIVILEGES – grants all privileges to the MySQL user
+CREATE – allows the user to create databases and tables
+DROP - allows the user to drop databases and tables
+DELETE - allows the user to delete rows from specific MySQL table
+INSERT - allows the user to insert rows into specific MySQL table
+SELECT – allows the user to read the database
+UPDATE - allows the user to update table rows
+
+
+//create admin 
+
+CREATE user 'admin'@'localhost' identified by 'Flower33';
+
+//create employee
+
+CREATE user 'employee'@'localhost' identified by 'Orange44';
+
+
+//create user (anyone on the web)
+
+create user 'user'@'localhost' identified by 'Blueballs55';
+
+
+
+//JK the roles are acting screwy, instead im going to just pass privileges directly to the 
+//two accounts I need for functionality i.e. admin and employee
+
+//give employee execute of verifyLogin 
+grant execute on Function Asrcoo.verifyLogin to 'employee'@'localhost';
+//they also need view priv to execute this
+grant select on Asrcoo.user to 'employee'@'localhost';
+
+//give employee execute of list_visible_quizzes procedure
+grant execute on procedure Asrcoo.list_visible_quizes to 'employee'@'localhost';
+//give employee select on quiz
+grant select on Asrcoo.quiz to 'employee'@'localhost';
+
+
+
+//give admin execute on verifyLogin
+grant execute on Function Asrcoo.verifyLogin to 'admin'@'localhost';
+//as does admin
+grant select on Asrcoo.user to 'admin'@'localhost';
+
+
+//give user execute of verifyLogin
+grant execute on Function Asrcoo.verifyLogin to 'user'@'localhost';
+//grant user select of on Asrcoo.user
+grant select on Asrcoo.user to 'user'@'localhost';
+//grant user execute on get_user_privilege
+grant execute on Procedure Asrcoo.get_user_privilege to 'user'@'localhost';
+
+
+
+
+//give admin execute on add_user procedure
+grant execute on procedure Asrcoo.add_user to 'admin'@'localhost';
+//give admin insert on user table
+grant insert on Asrcoo.user to 'admin'@'localhost';
+//give admin execute on delete_user procedure
+grant execute on procedure Asrcoo.delete_user to 'admin'@'localhost';
+//give admin delete privilege on Asrcoo.user table
+grant delete on Asrcoo.user to 'admin'@'localhost';

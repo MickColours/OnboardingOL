@@ -1,0 +1,12 @@
+One of the fundamental ideas of cyber security is separation of privilge.
+These 3 php scripts contain functions that return a php PDO which is an interface to 
+interact with our mysql server.
+
+user privilege is anyone who has acess to the website (i.e. anyone on the internet)
+	as a result they are only allowed to access the user table to call the verifyLogin mysql function.
+
+employee privilege is anyone who logs in with valid login credentials
+
+admin privilege is obviously admins ...
+
+

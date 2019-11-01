@@ -1,0 +1,18 @@
+USE `Asrcoo`;
+DROP procedure IF EXISTS `add_user`;
+
+DELIMITER $$
+USE `Asrcoo`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `add_user`(thisEmail varchar(45), thisPassword varchar(45), thisPrivilege int)
+BEGIN
+	-- this procedure assumes the thisEmail and thisPassword have
+    -- been verified by prior php script
+	INSERT INTO `Asrcoo`.`user` (`user_name`, `authentication_string`,`privilege`)
+    VALUES (thisEmail, thisPassword, thisPrivilege);
+
+END$$
+
+DELIMITER ;
+
+
+

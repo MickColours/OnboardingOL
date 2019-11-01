@@ -1,0 +1,17 @@
+USE `Asrcoo`;
+DROP procedure IF EXISTS `list_visible_quizzes`;
+
+DELIMITER $$
+USE `Asrcoo`$$
+CREATE PROCEDURE `list_visible_quizzes` ()
+BEGIN
+	#display all of the visible quizzes; with there descriptions, and authors
+	select q.name, q.quiz_id, q.description, u.user_name
+	from Asrcoo.quiz as q
+	join Asrcoo.user as u
+	on q.author_id = u.user_id
+	where q.visibility =1;
+END$$
+
+DELIMITER ;
+

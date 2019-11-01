@@ -1,0 +1,60 @@
+/* General rule of thumb, most of the CSS i got from examples on the internet. Feel free to adjust */
+/* The following gives color, background, and shape/size to buttons,
+as well as dropdown functionality to buttons. */
+
+/*padding will be adjusted when we solve the picture issue */
+html, body {
+  height:100%;
+  margin: 0; 
+  padding: 0;
+  background-image: url("/src/homepage_background_image.jpg");
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+}
+
+.header {
+  background: #211483;
+  color: white;
+  text-align: center;
+  font-family: arial;
+  font-size:12px;
+  padding: 5px 5px 0px;
+  box-shadow: 0px 5px 5px #4134A4;
+}
+
+.dropbtn {
+  background-color: #211483;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #4134A4;}
+
+.dropbtn:hover {background-color:#4134A4;}
