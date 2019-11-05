@@ -1,14 +1,17 @@
 <?php 
-include "../homepage/homepage.php"; 
+include "../homepage/navBar.php"; 
 session_start();
 ?>
 <html>
+  <head>
+    <title>AFMS Online Onboarding Learning Resource</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+  </head>
   <body>
-    <link rel="stylesheet" type="text/css" href="/css/style_general_table.css">
-    <div class="box">
-      <h1> Take a Quiz </h1>
-      <table id="generalTable" class="generalTable">
-        <tr class="tableHeader"> 
+    <div class="container">
+      <h1 id="tableHeading">Take a Quiz </h1>
+      <table class="displayTable">
+        <tr id="headerRow"> 
 	  <th>Quiz Name</th>
 	  <th>Quiz Author</th>
 	  <th>Date Created</th>

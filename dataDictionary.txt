@@ -35,6 +35,7 @@ inspected_user_id			 Form
 userManagement/createUser.php
 
 add_user_error_msg			 Session
+create_user_success_msg			 Session
 user_name				 Form
 re_user_name				 Form	
 user_password				 Form

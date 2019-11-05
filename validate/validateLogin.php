@@ -65,7 +65,7 @@ to allow this function call to be dynamic , i.e. using any login credentials.
 		$res = $res[0];
 		$res = $res['privilege']; //privilege is the name of the column that is returned from procedure call
 		//set the loggedIn field to true
-		$_SESSION['loggedIn']=true;
+		$_SESSION['logged_in']=1;
 		//pass user privilege
 		$_SESSION['user_privilege']=$res;
 		//pass username
@@ -73,7 +73,7 @@ to allow this function call to be dynamic , i.e. using any login credentials.
 		header("Location: /homepage/homepage.php");
 	}else{
 		$_SESSION['login_error_msg']='Invalid credentials.';
-		header("Location: login.php");
+		header("Location: ../login.php");
 	}
 	 
 

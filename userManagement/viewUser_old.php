@@ -1,33 +1,42 @@
 <!DOCTYPE html>
-<?php
-
-#redirect users who are not logged in
-include '../accessControl/loggedIn.php';
-Allowed();
-
-include '../homepage/navBar.php';
-?>
 
 <html>
 <!-- Authors: [ Frank* , Matt ] -->
 <!-- Structure (frank) debugging (matt) -->
+ <link rel="stylesheet" type="text/css" href="/css/style_user_manage.css">
+ <link rel="stylesheet" type="text/css" href="/css/style_buttons.css">
+ <link rel="stylesheet" type="text/css" href="/css/style_general_table.css">
+
+ <div class = "manageUserBox">
   <head>
     <title>View Users</title>
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
   </head>
   <body>
-    <div class = "container" id="userBox">
-      <!-- user info table -->
-      <div class="container">
-        <h1 id="tableHeading">User List</h1>
-        <table class="displayTable" id="displayTable">
-	<!-- column names -->
-	  <tr id="headerRow">
-	    <th style="width:70%;">User Name</th>
-            <th style="width:30%;">
-	      <input type="text" id="searchBar" onkeyup="searchUsers()" placeholder="Search users..">
-	    </th>
-	  </tr>
+    <form action='/homepage/homepage.php'>
+    <input class = "button1" id = "cancel" class='button1' type="submit" value="Cancel"/>
+    </form>
+
+    <form action='/userManagement/createUser.php'>
+    <input class = "button2" type = "submit" value = "Create User" id = "create_user"/>
+    </form>
+
+
+    <!-- search bar-->
+    <br><input class = "input" type="text" id="searchBar" onkeyup="searchUsers()" placeholder="Search users..">
+
+	<!-- user info table -->
+    <div class="box">
+    <h1>User List</h1>
+    <table id="generalTable">
+		<!-- column names -->
+	    <tr class="tableHeader">
+	        <th style="width:70%;">User Name</th>
+                <th style="width:50%;">
+
+			<input class = "input" type="text" id="searchBar" onkeyup="searchUsers()" placeholder="Search users..">
+
+		</th>
+	    </tr>
 		<?php
 		//import connectAdmin() function
 		include '../connections/connectAdmin.php';
@@ -71,15 +80,8 @@ include '../homepage/navBar.php';
 
 	?>	
     </table>
-      </div>
-      <br>
-      <form action='/homepage/homepage.php'>
-      <input id = "cancelButton" class='button' type="submit" value="Cancel"/>
-      </form>
-      <form action='/userManagement/createUser.php'>
-      <input class = "button" type = "submit" value = "Create User" id = "submitButton"/>
-      </form>
-    </div>
+   </div>
+   </div>
 <!-- grab the deletion_success_message and print it if its not empty -->
 <script language="javascript">
 var deletion_success_message='<?php
@@ -100,7 +102,7 @@ function searchUsers() {
   var input, filter, table, tr, td, i, txtValue;
   input = document.getElementById("searchBar");
   filter = input.value.toUpperCase();
-  table = document.getElementById("displayTable");
+  table = document.getElementById("generalTable");
   tr = table.getElementsByTagName("tr");
 
   // Loop through all table rows, and hide those who don't match the search query

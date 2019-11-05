@@ -1,19 +1,28 @@
-<?php include "../homepage/homepage.php";
+<?php 
+include "../homepage/navBar.php";
 session_start();
 ?>
 <html>
+  <head>
+    <title>AFMS Online Onboarding Learning Resource</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+  </head>
   <body>
-    <link rel="stylesheet" type="text/css" href="/css/style_edit_quiz.css">
-    <h1> Edit a Quiz </h1>
-    <div class="box">
-    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search Quizzes">
-      <table id="quizTable">
-	<tr class="tableHeader">
+    <div class="container">
+      <h1 id="tableHeading">Edit a Quiz</h1>
+      <table class="displayTable">
+	<tr id="headerRow">
 	  <th>Quiz Name</th>
-	  <th><!-- Intentionally left blank --></th>
+	  <th>Author</th>
+	  <th>Date Created</th>
+	  <th>
+	    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search Quizzes">
+	  </th>
 	</tr>
       </table>
     </div>
+
+
     <script>
     function myFunction() {
       // Declare variables

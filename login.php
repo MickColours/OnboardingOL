@@ -3,39 +3,30 @@
 <?php 
  session_start();
 ?>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>ASRC Onboarding</title>
-  <link rel="stylesheet" type="text/css" href="/css/style_login.css">
-</head>
-<body>
 
-<!-- partial:index.partial.html -->
 <html>
   <head>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
     <title>
       AFMS Onboarding Online Learning Resource
     </title>
   </head>
   
   <body>
-  <div class="header">
+  <div class="loginHeader">
     <h1>
       AFMS Onboarding Online Learning Resource
     </h1>
   </div>
-
- <form action='validate/validateLogin.php' method="get" name="login">
-    <div id='login'>
-      <p>Username</p>
-      <input type="text" name="user_name"/>
-      <p>Password</p>
-      <input type="password" name="user_password"/>
+  <form id="loginForm" action='validate/validateLogin.php' method="get" name="login">
+    <div id='loginBox' class="container">
+      <label for="name">Username</label>
+      <input id="userNameInput" type="text" name="user_name"/>
+      <label for="password">Password</label>
+      <input id="passwordInput" type="password" name="user_password"/>
+    <input id='submitButton' class='button' type="submit"  value="Login" style="float:none; width:100%;">
     </div>
-    
-    <input id='submit' class='button' type="submit"  value="Login"/>
- </form>
+  </form>
 
     <!-- the below script allows the form action to be triggered by pressing enter -->
     <script language="javascript">
@@ -55,8 +46,4 @@ input.addEventListener("keyup", function(event) {
 
     </script>
   </body>
-</html>
-<!-- partial -->
-  
-</body>
 </html>

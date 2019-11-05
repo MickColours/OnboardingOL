@@ -1,13 +1,17 @@
-<?php 
-include "../homepage/homepage.php";
+<?php
+include '../accessControl/loggedIn.php'
+Allowed();
+include '../homepage/navBar.php'
 session_start();
- ?>
-<html
+?>
+<html>
+  <head>
+    <title>AFMS Online Onboarding Learning Resource</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+  </head>
   <body>
-    <link rel="stylesheet" type="text/css" href="/css/style_create_quiz.css">
-    <h1> Create a Quiz </h1>
-    <div class="box">
-      <
+    <div class="container">
+      <h1 id="tableHeading">Create a Quiz</h1>
   </body>
 </html>
 

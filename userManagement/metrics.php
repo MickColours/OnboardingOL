@@ -1,60 +1,69 @@
 <?php
 session_start();
+#redirect users who are not logged In
+include '../accessControl/loggedIn.php';
+Allowed();
+include '../homepage/navBar.php'
 ?>
-<link rel="stylesheet" type="text/css" href="/css/style_user_manage.css">
-<link rel="stylesheet" type="text/css" href="/css/style_buttons.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
 <html>
-  <div class ="box";
-  <h1>Top 3 Quizzes</h1>
-   <table id ="bestQuizList">
-    <tr class ="columnName">
+  <div class ="container">
+  <h1 id="tableHeading">Top 3 Quizzes</h1>
+    <table class="displayTable" id="top3table">
+      <tr id="headerRow">
+        <th>Quiz Name</th>
+        <th>Attempts</th>
+        <th>Average Score</th>
+      </tr>
+      <tr>
+        <td>Sample Quiz</td>
+        <td>20</td>
+        <td>95%</td>
+      </tr>
+      <tr>
+        <td>Jets</td>
+        <td>10</td>
+        <td>88%</td>
+      </tr>
+      <tr>
+        <td>Helicopters</td>
+        <td>5</td>
+        <td>100%</td>
+      </tr>
+    </table>
+  </div>
+  <div class ="container">
+    <h1 id="tableHeading">All Quizzes</h1>
+  <!-- search bar-->
+    <table class="displayTable" id="searchBarRow">
+      <th>
+	<input class = "input" type="text" id="searchBar" onkeyup="searchQuizzes()" placeholder="Search quizzes..">
+      </th>
+    </table>
+  <br>
+  <table class="displayTable" id="quizList">
+    <tr id="headerRow">
       <th>Quiz Name</th>
       <th>Attempts</th>
       <th>Average Score</th>
     </tr>
     <tr>
-    <td>Sample Quiz</td>
-    <td>20</td>
-    <td>95%</td>
+      <td>Sample Quiz</td>
+      <td>20</td>
+      <td>95%</td>
     </tr>
     <tr>
-    <td>Jets</td>
-    <td>10</td>
-    <td>88%</td>
+      <td>Jets</td>
+      <td>10</td>
+      <td>88%</td>
     </tr>
     <tr>
-    <td>Helicopters</td>
-    <td>5</td>
-    <td>100%</td>
+      <td>Helicopters</td>
+      <td>5</td>
+      <td>100%</td>
     </tr>
   </table>
-</div>
- <div class ="box";
-   <!-- search bar-->
-   <br><input class = "input" type="text" id="searchBar" onkeyup="searchQuizzes()" placeholder="Search quizzes..">
-  <table id ="quizList">
-    <tr class ="columnName">
-      <th>Quiz Name</th>
-      <th>Attempts</th>
-      <th>Average Score</th>
-    </tr>
-    <tr>
-    <td>Sample Quiz</td>
-    <td>20</td>
-    <td>95%</td>
-    </tr>
-    <tr>
-    <td>Jets</td>
-    <td>10</td>
-    <td>88%</td>
-    </tr>
-    <tr>
-    <td>Helicopters</td>
-    <td>5</td>
-    <td>100%</td>
-    </tr>
-  </table>
- </div>
+  </div>
 </html>
 
 <script>

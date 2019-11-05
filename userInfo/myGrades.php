@@ -1,40 +1,53 @@
-<?php include "../homepage/homepage.php" ?>
+<?php include "../homepage/navBar.php" ?>
 <script>
 var sess ='<?php
 session_start();
 ?>'
 </script>
 <html>
-
-<link rel="stylesheet" type="text/css" href="/css/style_general_table.css">
-
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search quizzes..">
-
-<div class="box">
-<h1>My Grades</h1>
-<table id="generalTable" class="generalTable">
-  <tr class="tableHeader">
-    <!--th style="width:90%;"--><th>Quiz Name</th>
-    <!--th style="width:50%;"--><th>Grade</th>
-  </tr>
-  <tr>
-    <td>Sample Quiz</td>
-    <td>100%</td>
-  </tr>
-  <tr>
-    <td>General ASRC Info</td>
-    <td>85%</td>
-  </tr>
-  <tr>
-    <td>Placeholder 1</td>
-    <td>95%</td>
-  </tr>
-  <tr>
-    <td>Placeholder 2</td>
-    <td>70%</td>
-  </tr>
-</table>
-</div>
+  <head>
+    <title>AFMS Online Onboarding Learning Resource</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1 id="tableHeading">My Grades</h1>
+      <table class="displayTable">
+        <tr id="headerRow">
+          <th>Quiz Name</th>
+	  <th>Best Grade</th>
+	  <th>Date Taken</th>
+          <th>
+	    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search quizzes..">
+	  </th>
+	</tr>
+	<tr>
+	  <td>Sample Quiz</td>
+	  <td>100%</td>
+	  <td>4/20/2069</td>
+	  <td><!-- Intentionally Left Blank --></td>
+	</tr>
+	<tr>
+	  <td>General ASRC Info</td>
+	  <td>85%</td>
+	  <td>4/20/2069</td>
+	  <td><!-- Intentionally Left Blank --></td>
+	</tr>
+	<tr>
+	  <td>Placeholder 1</td>
+	  <td>95%</td>
+	  <td>4/20/2069</td>
+	  <td><!-- Intentionally Left Blank --></td>
+	</tr>
+	<tr>
+	  <td>Placeholder 2</td>
+	  <td>70%</td>
+	  <td>4/20/2069</td>
+	  <td><!-- Intentionally Left Blank --></td>
+	</tr>
+      </table>
+    </div>
+  </body>
 
 <script>
 function myFunction() {

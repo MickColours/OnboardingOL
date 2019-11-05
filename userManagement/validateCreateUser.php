@@ -53,6 +53,7 @@ if ($valid==1){
 	$stmt->bindParam(':upr',$priv, PDO::PARAM_STR);
 
 	$stmt->execute();
+	$_SESSION['create_user_success_msg']='Created user successfully.';
 	header("Location: /userManagement/createUser.php");
 
 //credentials do not match

@@ -14,7 +14,15 @@ from it
 -->
 
 <!-- allow data transfer through session variables -->
-<?php session_start(); ?>
+<?php 
+session_start(); 
+#redirect users who are not logged In
+include '../accessControl/loggedIn.php';
+Allowed();
+
+include '../homepage/navBar.php';
+
+?>
 
 <html lang="en">
 <head>
