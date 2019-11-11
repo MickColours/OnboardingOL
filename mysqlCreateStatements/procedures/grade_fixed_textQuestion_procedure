@@ -1,0 +1,32 @@
+USE `Asrcoo`;
+DROP procedure IF EXISTS `grade_fixed_textQuestion`;
+
+DELIMITER $$
+USE `Asrcoo`$$
+CREATE PROCEDURE `grade_fixed_textQuestion` (thisQuestionID int, thisAnswerString varchar(45))
+BEGIN
+#grade a multiple text  (MC or SATA) = (fixed) question
+
+#given a question id and a user's answer string: which consists of answer ids , comma separatred, and ascending
+#subquery to retrive the valid answer answer set (i.e. all id's with validity 1 that map to the question)
+#subquery to retrieve the questions point value
+#return the point value of the answer string provided matches the answer string generated
+#the generated answer string is forced to be sorted asc by textAnswer_id for consistency
+SELECT IF(thisAnswerString=
+				#SUBQUERY: get correct answer for question_id
+				(select GROUP_CONCAT(ta.textAnswer_id ORDER BY ta.textAnswer_id ASC SEPARATOR ',')
+				from Asrcoo.questionTextAnswer as qta
+				join Asrcoo.textAnswer as ta
+				on qta.textAnswer_id = ta.textAnswer_id
+				where ta.validity =1 and qta.question_id = thisQuestionID),
+                #SUBQUERY: get the point value for question_id
+				(SELECT q.point_value
+				FROM Asrcoo.question AS q
+				WHERE q.question_id = thisQuestionID)
+				,0) as 'points_earned';
+END$$
+
+DELIMITER ;
+
+
+

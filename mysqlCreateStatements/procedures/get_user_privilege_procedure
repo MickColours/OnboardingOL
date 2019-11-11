@@ -3,7 +3,7 @@ DROP procedure IF EXISTS `get_user_privilege`;
 
 DELIMITER $$
 USE `Asrcoo`$$
-CREATE PROCEDURE `get_user_privilege` (thisUsername varchar(45))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `get_user_privilege`(thisUsername varchar(45))
 BEGIN
 	#get the priviliege level of the user with thisUsername
 	select privilege
@@ -12,4 +12,3 @@ BEGIN
 END$$
 
 DELIMITER ;
-

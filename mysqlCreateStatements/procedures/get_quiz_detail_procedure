@@ -1,0 +1,31 @@
+USE `Asrcoo`;
+DROP procedure IF EXISTS `get_quiz_detail`;
+
+DELIMITER $$
+USE `Asrcoo`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `get_quiz_detail`(thisQuiz int)
+BEGIN
+    #list all quiz details for a particular quiz
+	select q.name, u.user_name as 'author', q.date_created , q.time_limit ,q.description,
+    
+		#subquery to count up all quiz questions
+		(select count(*) 
+		from Asrcoo.quizQuestion as qq
+		where qq.quiz_id=thisQuiz) as 'number_of_questions',
+        
+        ##subquery to get total points
+        (select sum(q.point_value) 
+		from Asrcoo.question as q
+        join Asrcoo.quizQuestion as qq
+        on qq.question_id = q.question_id
+        where qq.quiz_id =thisQuiz) as 'total_points'
+        
+	from Asrcoo.quiz as q
+	join Asrcoo.user as u
+	on q.author_id = u.user_id
+	where q.quiz_id =thisQuiz;
+END$$
+
+DELIMITER ;
+
+

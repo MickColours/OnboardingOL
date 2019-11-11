@@ -3,7 +3,7 @@ DROP procedure IF EXISTS `add_user`;
 
 DELIMITER $$
 USE `Asrcoo`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `add_user`(thisEmail varchar(45), thisPassword varchar(45), thisPrivilege int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `add_user`(thisEmail varchar(45), thisPassword varchar(256), thisPrivilege int)
 BEGIN
 	-- this procedure assumes the thisEmail and thisPassword have
     -- been verified by prior php script

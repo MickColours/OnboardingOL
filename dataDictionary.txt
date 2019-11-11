@@ -12,7 +12,7 @@ validate/validateLogin.php
 
 logged_in				 Session				All pages
 welcome_msg				 Session				homepage.php
-user_privilege				 Session				homepage.php
+user_privilege				 Session				homepage.php/viewUser.php/manageUser.php/createUser.php
 login_error_msg				 Session				
 user_name				 Form	
 user_password				 Form

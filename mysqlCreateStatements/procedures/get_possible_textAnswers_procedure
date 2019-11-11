@@ -1,0 +1,23 @@
+USE `Asrcoo`;
+DROP procedure IF EXISTS `Asrcoo`.`get_possible_text_answers`;
+
+DELIMITER $$
+USE `Asrcoo`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `get_possible_textAnswers`(thisQuestion int)
+BEGIN
+	#For multiple choice and SATA questions
+    #this procedure is called to return the possible
+    #answers for users to select
+    #it returns the answer texts, and textAnswer_ids
+	select ta.textAnswer_id , ta.answer_text
+	from Asrcoo.questionTextAnswer as qta
+	join Asrcoo.textAnswer as ta
+	on qta.textAnswer_id = ta.textAnswer_id
+	where qta.question_id = thisQuestion;
+END$$
+
+DELIMITER ;
+;
+
+
+

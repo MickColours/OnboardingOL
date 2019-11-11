@@ -22,14 +22,19 @@ to allow this function call to be dynamic , i.e. using any login credentials.
 	include '../connections/connectUser.php';
 	
 	#retrieve the login credentials from the form
-	$user_id = $_GET["user_name"];
-	$authentication_string = $_GET["user_password"];  
+ 	$user_name = $_GET["user_name"];
+	#trim trailing and leading whitespace
+	$user_name = trim($user_name);
+	$authentication_string = $_GET["user_password"];
+	#trim trailing and leading whitespace
+	$authentication_string = trim($authentication_string);
 	$dbh = ConnectUser();
 
-	//note Asrcoo.verifyLogin() should be recoded as a procedure since by defintion it
-	//is not a function
+	#old method , no hashing
 
-	
+	/*	
+	//note Asrcoo.verifyLogin() should be recoded as a procedure since by defintion it
+	//is not a function		
 	//build query string
 	$query_string = " select Asrcoo.verifyLogin(:uid,:as) as result";
 	$stmt = $dbh->prepare($query_string);
@@ -51,15 +56,28 @@ to allow this function call to be dynamic , i.e. using any login credentials.
 	$result = $result[0];
 	//index the field I called this 'result' as indicated in query_string 
 	$result = $result['result'];
+	*/ 
+
 	
-	if ($result==1){
+	
+	#new method with hashing
+	$query_string = " call Asrcoo.get_authentication_string(:un);";
+	$stmt = $dbh->prepare($query_string);
+	$stmt->bindParam(':un', $user_name, PDO::PARAM_STR);
+	$stmt->execute();
+	$result = $stmt->fetchAll();
+	$result = $result[0];
+	$hash = $result['hash'];
+	$valid = password_verify($authentication_string,$hash);
+		
+	#if ($result==1){
+	if ($valid){
 		//note with header, it will not work if you output content before user
 		//redirection
-		
 		//retrieve the valid login's privilege level
-		$query_string2 = " call Asrcoo.get_user_privilege(:un)";
+		$query_string2 = " call Asrcoo.get_user_privilege(:un);";
 	        $stmt = $dbh->prepare($query_string2);
-		$stmt->bindParam(':un', $user_id, PDO::PARAM_STR);
+		$stmt->bindParam(':un', $user_name, PDO::PARAM_STR);
 		$stmt->execute();
 		$res = $stmt->fetchAll();
 		$res = $res[0];
@@ -69,7 +87,7 @@ to allow this function call to be dynamic , i.e. using any login credentials.
 		//pass user privilege
 		$_SESSION['user_privilege']=$res;
 		//pass username
-		$_SESSION['welcome_msg']="Welcome ". $user_id;
+		$_SESSION['welcome_msg']="Welcome ". $user_name;
 		header("Location: /homepage/homepage.php");
 	}else{
 		$_SESSION['login_error_msg']='Invalid credentials.';

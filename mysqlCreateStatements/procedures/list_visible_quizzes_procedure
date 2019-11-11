@@ -3,10 +3,10 @@ DROP procedure IF EXISTS `list_visible_quizzes`;
 
 DELIMITER $$
 USE `Asrcoo`$$
-CREATE PROCEDURE `list_visible_quizzes` ()
+CREATE DEFINER=`root`@`localhost` PROCEDURE `list_visible_quizzes`()
 BEGIN
-	#display all of the visible quizzes; with there descriptions, and authors
-	select q.name, q.quiz_id, q.description, u.user_name
+	#display all of the quizzes's names , authors , and data of creation
+	select q.quiz_id, q.name, u.user_name as 'author', q.date_created
 	from Asrcoo.quiz as q
 	join Asrcoo.user as u
 	on q.author_id = u.user_id
@@ -14,4 +14,5 @@ BEGIN
 END$$
 
 DELIMITER ;
+
 

@@ -1,55 +1,75 @@
+<!-- allows data transfer through session -->
 <?php 
+#includes the HTML code for the navigation bar
 include "../homepage/navBar.php"; 
 session_start();
 ?>
+
+<!-- Author: Victor, Frank    Date Created : ? -->
+
 <html>
   <head>
-    <title>AFMS Online Onboarding Learning Resource</title>
+    <title>Take a Quiz | AFMS Online Onboarding Learning Resource</title>
+    <!-- Links the CSS code -->
     <link rel="stylesheet" type="text/css" href="/css/style.css">
   </head>
+
   <body>
+    <!-- creates a container that will display the contents of the page -->
     <div class="container">
       <h1 id="tableHeading">Take a Quiz </h1>
-      <table class="displayTable">
+      <!-- creates a table that will display a list of quizzes that can be taken -->
+      <!-- each entry will contain a button that will redirect to a preQuiz screen for that quiz -->
+      <table class="displayTable" id="quizTable">
         <tr id="headerRow"> 
 	  <th>Quiz Name</th>
 	  <th>Quiz Author</th>
 	  <th>Date Created</th>
 	  <th>
-	    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search Quizzes">
-          </th>
+	    <!-- creates a text box with the functionality of a search box -->
+	    <input type="text" id="searchBox" onkeyup="myFunction()" placeholder="Search Quizzes">
+	  </th>
+
 	</tr>
 	<tr>
-	  <td>Placeholder</td>
-	  <td>Placeholder</td>
-	  <td>4/20/2069</td>
-	  <td>
-	    <button type="button">Button</button>
-	  </td>
-	</tr>
-	<tr>
-	  <td>Placeholder</td>
-	  <td>Placeholder</td>
-	  <td>4/20/2069</td>
-	  <td>
-	    <button type="button">Button</button>
-	  </td>
-	</tr>
-	<tr>
-	  <td>TestPlaceholder</td>
-	  <td>Placeholder</td>
-	  <td>4/20/2069</td>
-	  <td>
-	    <button type="button">Button</button>
-	  </td>
-	</tr>
+	
+	
+	<?php
+
+	include '../connections/connectEmployee.php';
+	session_start();
+
+	$dbh = ConnectAdmin();
+
+	$query_string = " call Asrcoo.list_visible_quizzes() ";
+
+	$sth = $dbh->prepare($query_string);
+	$sth->execute();
+
+	$table_string= " ";
+	foreach($sth->fetchAll() as $row){
+		$table_string .= "<tr>\n";
+		$table_string .= "<td>" . $row['name'] ."</td>\n";
+		/*This will eventually display attempts and average score
+		$table_string .= "<td>" . $row['author'] ."</td>\n";
+		$table_string .= "<td>" . $row['date_created'] ."</td>\n";
+		*/
+                $table_string .= "</tr>\n";
+
+	}
+
+	echo $table_string;
+	?>	
       </table>
     </div>
+
+    <!-- Javascript code that will enable the textbox to search through table entries
+         and filter out results to match those in the textbox -->
     <script>
     function myFunction() {
       // Declare variables
       var input, filter, table, tr, td, i, txtValue;
-      input = document.getElementById("myInput");
+      input = document.getElementById("searchBox");
       filter = input.value.toUpperCase();
       table = document.getElementById("quizTable");
       tr = table.getElementsByTagName("tr");

@@ -1,0 +1,18 @@
+USE `Asrcoo`;
+DROP procedure IF EXISTS `list_user_quizzes`;
+
+DELIMITER $$
+USE `Asrcoo`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `list_user_quizzes`(thisUser int)
+BEGIN
+	select q.quiz_id, q.name, q.date_created, q.visibility
+	from Asrcoo.quiz as q
+	join Asrcoo.user as u
+	on q.author_id = u.user_id
+	where q.author_id = thisUser;
+END$$
+
+DELIMITER ;
+
+
+

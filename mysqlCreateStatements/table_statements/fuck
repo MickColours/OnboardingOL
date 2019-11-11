@@ -1,0 +1,11 @@
+I accidently deleted my table statements and some procedures
+I need to recreate these in the future ...
+
+
+
+Apparently I can generate the create table statements from the existing tables using
+
+SHOW CREATE TABLE tablename
+
+
+

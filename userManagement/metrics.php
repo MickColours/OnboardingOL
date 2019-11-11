@@ -3,6 +3,8 @@ session_start();
 #redirect users who are not logged In
 include '../accessControl/loggedIn.php';
 Allowed();
+include '../accessControl/adminLoggedIn.php';
+Admin();
 include '../homepage/navBar.php'
 ?>
 <link rel="stylesheet" type="text/css" href="/css/style.css">
@@ -30,14 +32,46 @@ include '../homepage/navBar.php'
         <td>5</td>
         <td>100%</td>
       </tr>
-    </table>
-  </div>
+
+  <?php
+	 include '../connections/connectAdmin.php';
+        session_start();
+
+        $dbh = connectEmployee();
+
+        $query_string = " call Asrcoo.list_visible_quizzes() ";
+
+        $sth = $dbh->prepare($query_string);
+        $sth->execute();
+
+        $table_string= " ";
+        foreach($sth->fetchAll() as $row){
+                $table_string .= "<tr>\n";
+                $table_string .= "<td>" . $row['name'] ."</td>\n";
+                $table_string .= "<td>" . $row['author'] ."</td>\n";
+                $table_string .= "<td>" . $row['date_created'] ."</td>\n";
+                $table_string .= " <td>";
+                $table_string .= " <form action='preQuiz.php' method='get' name='view_quiz'> ";
+                $table_string .= " <input id='submit' class='button' type='submit' value='View Quiz'/> ";
+                $table_string .= " <input type='hidden' id='inspected_quiz_name' name='inspected_quiz_name' value='" . $row['name'] . "'/>";
+                $table_string .= " <input type='hidden' id='inspected_quiz_id' name='inspected_quiz_id' value='" . $row['quiz_id']  .   "'/>";
+                $table_string .= " </form>";
+                $table_string .= " </td>" ;
+                $table_string .= "</tr>\n";
+
+        }
+
+        echo $table_string;
+        ?>
+      </table>
+    </div>
+
   <div class ="container">
     <h1 id="tableHeading">All Quizzes</h1>
   <!-- search bar-->
     <table class="displayTable" id="searchBarRow">
       <th>
-	<input class = "input" type="text" id="searchBar" onkeyup="searchQuizzes()" placeholder="Search quizzes..">
+	<input class = "input" type="text" id="searchBox" onkeyup="searchQuizzes()" placeholder="Search quizzes..">
       </th>
     </table>
   <br>
@@ -71,7 +105,7 @@ include '../homepage/navBar.php'
 function searchQuizzes() {
   // Declare variables
   var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("searchBar");
+  input = document.getElementById("searchBox");
   filter = input.value.toUpperCase();
   table = document.getElementById("quizList");
   tr = table.getElementsByTagName("tr");

@@ -4,6 +4,8 @@
 #redirect users who are not logged In
 include '../accessControl/loggedIn.php';
 Allowed();
+include '../accessControl/adminLoggedIn.php';
+Admin();
 
 include '../homepage/navBar.php';
 ?>

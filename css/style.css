@@ -98,10 +98,34 @@ background-color:#4134A4
   width:25%;
 }
 
+.container#quizInfoContainer {
+  width: 80%;
+  border: 0px solid;
+}
+
+.container#quizContainer {
+  width: 90%;
+  margin: 50px auto 0 auto;
+  background: rgba(255,255,255,0.75);
+  border: 0px solid;
+  padding: 0px 0px 50px 0px;
+  border-radius: 4px;
+}
 
 .displayTable{
   width: 100%;
   border-collapse: collapse;
+}
+
+.quizInformation {
+  border-bottom-style: solid;
+  border-width: 0px 0px 1px 0px;
+  box-shadow: 0 4px 10px -10px black;
+  padding: 0px;
+}
+
+p.info {
+  margin: 12px 20px 12px 20px;
 }
 
 th {
@@ -123,13 +147,19 @@ th {
   width:100%;
   }
 
-input[type=text]{
+input[type=text]#searchBox{
   width: 95%;
   border-radius: 4px;
   padding: 4px;
   }
 
-input[type=password]{
+input[type=text]#userNameInput{
+  width: 95%;
+  border-radius: 4px;
+  padding: 4px;
+  }
+
+input[type=password]#passwordInput{
   width: 95%;
   border-radius: 4px;
   padding: 4px;
@@ -140,8 +170,17 @@ input#createUser {
   margin: 5px 30px 5px 45px;
 }
 
+input#mcChoice {
+  margin: 0px 10px 0px 50px;
+}
+
 tr:nth-child(even) {
 background-color: #f2f2f2;
+}
+
+label.possibleAnswer {
+  display: block;
+  margin-bottom: 10px;
 }
 
 .loginHeader {
@@ -156,8 +195,7 @@ background-color: #f2f2f2;
 
 .button {
   border-radius: 5px;
-  font-family: arial;
-  margin: 10px 0px 10px 0px;
+  margin: 5px 0px 5px 0px;
   padding: 5px 0px 5px 0px;
   text-align: center;
 }
@@ -171,6 +209,7 @@ background-color: #f2f2f2;
   width: 125px;
   float:right;
   margin-right: 60px;
+  font-family:arial;
 }
 
 #cancelButton {
@@ -182,6 +221,7 @@ background-color: #f2f2f2;
   width:125px;
   float:left;
   margin-left: 60px;
+  font-family:arial;
 }
 
 #login {
@@ -190,3 +230,21 @@ background-color: #f2f2f2;
   grid-template-columns: auto auto;
   grid-template-rows: auto auto;
 }
+
+#quizInfoHeader {
+  font-family: sans-serif;
+  font-weight: 300;
+  color: white;
+  margin: 0px;
+  padding: 10px;
+  font-size: 20px;
+  background-image: radial-gradient(#4134A4 5%, #211483 95%);
+  text-align: center;
+  box-shadow: 0px 2px 4px #4134A4;
+  border-radius: 4px 4px 0px 0px;
+}
+
+#question {
+  margin: 10px 0px 0px 20px;
+}
+

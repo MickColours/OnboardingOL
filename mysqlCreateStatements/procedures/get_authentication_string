@@ -1,0 +1,17 @@
+USE `Asrcoo`;
+DROP procedure IF EXISTS `get_authentication_string`;
+
+DELIMITER $$
+USE `Asrcoo`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `get_authentication_string`(thisUsername varchar(45))
+BEGIN
+	select u.authentication_string as hash from
+	Asrcoo.user as u
+	where u.user_name = thisUsername;
+END$$
+
+DELIMITER ;
+
+
+
+

@@ -42,6 +42,10 @@ if ($valid==1){
 	$email1=$email1[0];
 
 
+	//hash the user's password using BCRYPT
+	$hash = password_hash($pass1, PASSWORD_BCRYPT);
+
+
 	//get mysql pdo
 	$dbh = ConnectAdmin();
 	//construct query to call add_user procedure
@@ -49,7 +53,7 @@ if ($valid==1){
 	//bind parameters to qeury
 	$stmt = $dbh->prepare($query_string);
 	$stmt->bindParam(':usn',$email1, PDO::PARAM_STR);
-	$stmt->bindParam(':uas',$pass1, PDO::PARAM_STR);
+	$stmt->bindParam(':uas',$hash, PDO::PARAM_STR);
 	$stmt->bindParam(':upr',$priv, PDO::PARAM_STR);
 
 	$stmt->execute();

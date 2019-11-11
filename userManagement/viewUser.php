@@ -4,7 +4,10 @@
 #redirect users who are not logged in
 include '../accessControl/loggedIn.php';
 Allowed();
+include '../accessControl/adminLoggedIn.php';
+Admin();
 
+#includes the HTML code for the navigation bar
 include '../homepage/navBar.php';
 ?>
 
@@ -12,10 +15,12 @@ include '../homepage/navBar.php';
 <!-- Authors: [ Frank* , Matt ] -->
 <!-- Structure (frank) debugging (matt) -->
   <head>
-    <title>View Users</title>
+    <title>View Users | AFMS Online Onboarding Learning Resource</title>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
   </head>
+
   <body>
+    <!-- creates a container that will have the displayed contents -->
     <div class = "container" id="userBox">
       <!-- user info table -->
       <div class="container">
@@ -25,7 +30,8 @@ include '../homepage/navBar.php';
 	  <tr id="headerRow">
 	    <th style="width:70%;">User Name</th>
             <th style="width:30%;">
-	      <input type="text" id="searchBar" onkeyup="searchUsers()" placeholder="Search users..">
+	      <!-- creates a text box with search box functionality -->
+              <input type="text" id="searchBar" onkeyup="searchUsers()" placeholder="Search users..">
 	    </th>
 	  </tr>
 		<?php
@@ -73,23 +79,27 @@ include '../homepage/navBar.php';
     </table>
       </div>
       <br>
+      <!-- buttons that will redirect based on their respective functions -->
       <form action='/homepage/homepage.php'>
-      <input id = "cancelButton" class='button' type="submit" value="Cancel"/>
+        <input id = "cancelButton" class='button' type="submit" value="Cancel"/>
       </form>
+
       <form action='/userManagement/createUser.php'>
-      <input class = "button" type = "submit" value = "Create User" id = "submitButton"/>
+        <input class = "button" type = "submit" value = "Create User" id = "submitButton"/>
       </form>
+
     </div>
+
 <!-- grab the deletion_success_message and print it if its not empty -->
 <script language="javascript">
-var deletion_success_message='<?php
-$deletion_success_message = $_SESSION['deletion_success_message'];
-unset($_SESSION['deletion_success_message']);
-echo $deletion_success_message;
-?>';
-if (deletion_success_message!==""){
-alert(' '.concat(deletion_success_message));
-}
+	var deletion_success_message='<?php
+	$deletion_success_message = $_SESSION['deletion_success_message'];
+	unset($_SESSION['deletion_success_message']);
+	echo $deletion_success_message;
+	?>';
+	if (deletion_success_message!==""){
+	alert(' '.concat(deletion_success_message));
+	}
 </script>
 
 

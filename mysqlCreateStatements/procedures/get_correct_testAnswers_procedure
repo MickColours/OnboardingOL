@@ -1,0 +1,26 @@
+USE `Asrcoo`;
+DROP procedure IF EXISTS `Asrcoo`.`get_correct_textAnswer`;
+
+DELIMITER $$
+USE `Asrcoo`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `get_correct_textAnswers`(thisQuestion int)
+BEGIN
+#retrive all valid (correct) textAnswer_ids and textAnswer texts
+#for a particular question
+#this is is used on all questions in the text family
+#i.e. textMC , textSATA , textFR
+#in all cases the result is a list
+#for textMC and textFR the list has 1 element
+#for textSATA it may have many
+select ta.textAnswer_id , ta.answer_text
+from Asrcoo.questionTextAnswer as qta
+join Asrcoo.textAnswer as ta
+on qta.textAnswer_id = ta.textAnswer_id
+where ta.validity =1 and qta.question_id = thisQuestion;
+
+END$$
+
+DELIMITER ;
+;
+
+

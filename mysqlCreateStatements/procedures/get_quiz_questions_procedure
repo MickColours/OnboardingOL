@@ -1,0 +1,18 @@
+USE `Asrcoo`;
+DROP procedure IF EXISTS `get_quiz_questions`;
+
+DELIMITER $$
+USE `Asrcoo`$$
+CREATE PROCEDURE `get_quiz_questions` (thisQuiz int)
+BEGIN
+#get all of the question_id's and question texts and question types of a given quiz
+select qqq.question_id , qqq.question_text, qqq.DTYPE as question_type
+from Asrcoo.quizQuestion as qq
+join Asrcoo.question as qqq
+on qqq.question_id = qq.question_id
+where qq.quiz_id =thisQuiz;
+END$$
+
+DELIMITER ;
+
+

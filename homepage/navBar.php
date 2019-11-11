@@ -63,7 +63,7 @@
     </a>
 	-->
 
-	<form action='http://54.198.147.202/accessControl/logout.php' method='get' name='logout'>
+	<form style="display:inline;" action='http://54.198.147.202/accessControl/logout.php' method='get' name='logout'>
 	<input id='submit' class='dropbtn' type='submit' value='Logout'/>
 	</form>
 
