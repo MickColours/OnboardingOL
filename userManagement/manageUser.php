@@ -62,8 +62,8 @@ echo "<div> Viewing user " . $inspected_user_name  . " with  user_id : " . $insp
 
 <!-- Delete User -->
 <td>
-<form action='./deleteUser.php' method="get" name="delete_user">
-    <input id='submit_delete_user' class='button' type="submit"  value="Delete User"/>
+    <form action='./deleteUser.php' method="get" name="delete_user" onsubmit = "return confirmDelete();">
+    <input onClick="confirmDelete(this.form);" id='submit_delete_user' class='button' type = "submit"  value="Delete User"/>
     <input type='hidden' id='inspected_user_id' name='inspected_user_id' value='<?php echo $inspected_user_id ?>'/>
     <input type='hidden' id='inspected_user_name' name='inspected_user_name' value='<?php echo $inspected_user_name ?>'/>
  </form>
@@ -71,11 +71,21 @@ echo "<div> Viewing user " . $inspected_user_name  . " with  user_id : " . $insp
 
 </tr>
 </table>
+	<script>
+	<script type="text/javascript">
+	//This function will ask the admin whether or not 
+	//they would like to continue deleting the user
+	//this comes in the form of a pop up box
+	function confirmDelete() {
 
-</body>
+	var res = confirm("Do you really wish to submit the form contents?");
 
-
+	if(res)
+		return true;
+	else
+		return false;
+        }
+	</script>
 </body>
 </html>
-
 

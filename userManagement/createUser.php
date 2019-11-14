@@ -45,13 +45,13 @@ to this page as mentioned below.
 		You can however close the form before the div, 
 		then add a new form outside of this one-->
 
-    <!-- <form action='viewUser.php'> -->
-    <input id="cancelButton" class='button' type="button" value="Cancel"/>
-    <!-- </form> -->
-
     <input id="submitButton" class='button' type="submit" value="Create User"/>
+    </form>
+
+     <form action='http://54.198.147.202/homepage/homepage.php'> 
+    <input id="cancelButton" class='button' type="submit" value="Cancel"/>
+     </form>
  </div>
-</form>
 
 
 

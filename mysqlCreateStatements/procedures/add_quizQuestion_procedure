@@ -1,0 +1,31 @@
+USE `Asrcoo`;
+DROP procedure IF EXISTS `add_quizQuestion`;
+
+DELIMITER $$
+USE `Asrcoo`$$
+CREATE PROCEDURE `add_quizQuestion` (thisQuiz int,thisQuestionText varchar(180),
+									thisPointValue int,
+                                    thisType enum('question','textMC','textSATA','textFR'))
+BEGIN
+	#variable to hold the primary key returned from inserting question
+	DECLARE thisQuestion_id int DEFAULT null;
+
+	#insert question into question table
+	INSERT INTO Asrcoo.question (`DTYPE`,`point_value`,`question_text`) 
+    VALUES (thisType,thisPointValue,thisQuestionText);   
+    
+    #store the primary key generated for above question
+	set thisQuestion_id =(SELECT LAST_INSERT_ID());
+    
+    #bridge the above question_id to the provided quiz id
+    INSERT INTO Asrcoo.quizQuestion (`quiz_id`,`question_id`)
+    VALUES (thisQuiz,thisQuestion_id);
+    
+	#return the generated question_id
+    select thisQuestion_id;
+    
+    
+END$$
+
+DELIMITER ;
+

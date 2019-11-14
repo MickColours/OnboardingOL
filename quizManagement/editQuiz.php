@@ -40,7 +40,7 @@ Allowed();
 
         $dbh = connectEmployee();
 
-        $query_string = " call Asrcoo.list_user_quizzes() "; #REPLACE PROCEDURE WITH PROCEDURE THAT DISPLAYS ONLY QUIZZES THE USER OWNS
+        $query_string = " call Asrcoo.list_user_quizzes(" . $_SESSION['user_id'] . ") "; #REPLACE PROCEDURE WITH PROCEDURE THAT DISPLAYS ONLY QUIZZES THE USER OWNS
 
         $sth = $dbh->prepare($query_string);
         $sth->execute();

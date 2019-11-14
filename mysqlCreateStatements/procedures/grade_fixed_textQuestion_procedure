@@ -3,7 +3,7 @@ DROP procedure IF EXISTS `grade_fixed_textQuestion`;
 
 DELIMITER $$
 USE `Asrcoo`$$
-CREATE PROCEDURE `grade_fixed_textQuestion` (thisQuestionID int, thisAnswerString varchar(45))
+CREATE PROCEDURE `grade_fixed_textQuestion` (thisQuestionID int, thisAnswerString varchar(90))
 BEGIN
 #grade a multiple text  (MC or SATA) = (fixed) question
 

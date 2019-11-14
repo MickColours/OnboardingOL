@@ -36,8 +36,9 @@ function formatTextAnswers($question_row) {
 	
 	 foreach($ans->fetchAll() as $ansRow){
 		
-		$possible_answer_string .= "<label class='possibleAnswer'>\n";
-		$possible_answer_string .= "<input type='radio' name='answer' id='mcOption' value=' " . $ansRow['textAnswer_id'] . "'/>\n";
+		 $possible_answer_string .= "<label class='possibleAnswer'>\n";
+		 $possible_answer_string .= "<br>\n";
+		$possible_answer_string .= "<input type='radio' name='answer' id='mcOption' value='" . $ansRow['textAnswer_id'] . "'/>\n";
 		$possible_answer_string .= " " . $ansRow['answer_text'] ."\n";
 		#pass question information
 		$possible_answer_string .= "<input type='hidden' id='question_id' name='question_id' value='" . $question_row['question_id'] ."'/>";
@@ -62,9 +63,23 @@ function formatTextAnswers($question_row) {
 		$possible_answer_string .= "</label>\n";
 		  
 	 }
- }
+ } elseif($question_row['question_type'] == 'textFR'){
+	 
+	 	$possible_answer_string .= "<form action = 'grading script for FRquestions here' method = 'get' name = 'answerBox'>";	
+		
+	 	$possible_answer_string .= "<label class= 'possibleAnswer'>\n";
+		$possible_answer_string .= "<input type='text' name='answer' id='FROption' " . "'/>\n";
+		#pass question information
+		$possible_answer_string .= "<input type='hidden' id='question_id' name='question_id' value='" . $question_row['question_id'] ."'/>";
+                $possible_answer_string .= "<input type='hidden' id='question_type' name='question_type' value='" . $question_row['question_type'] . "'/>";
+		$possible_answer_string .= "<input type='hidden' id='question_text' name='question_text' value ='" . $question_row['question_text'] . "'/>";
+		$possible_answer_string .= "</label>";
 
- $possible_answer_string .= "<input id='submit' class='button' type='submit' value='submit'/>";
+	 }
+  
+  
+
+ $possible_answer_string .= "<input id='questionSubmit' class='button' type='submit' value='Submit'/>";
  $possible_answer_string .= "</form>";
 
  

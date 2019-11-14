@@ -1,0 +1,26 @@
+USE `Asrcoo`;
+DROP procedure IF EXISTS `grade_unfixed_textQuestion`;
+
+DELIMITER $$
+USE `Asrcoo`$$
+CREATE PROCEDURE `grade_unfixed_textQuestion` (thisQuestionID int, thisAnswerString varchar(90))
+BEGIN
+	#grade_unfixed_textQuestion
+	SELECT IF(thisAnswerString=
+				#SUBQUERY: get correct answer(s) for question_id
+				(select ta.answer_text
+				from Asrcoo.questionTextAnswer as qta
+				join Asrcoo.textAnswer as ta
+				on qta.textAnswer_id = ta.textAnswer_id
+				where ta.validity =1 and qta.question_id =thisQuestionID),
+                #SUBQUERY: get the point value for question_id
+				(SELECT q.point_value
+				FROM Asrcoo.question AS q
+				WHERE q.question_id = thisQuestionID)
+				,0) as 'points_earned';
+END$$
+
+DELIMITER ;
+
+
+

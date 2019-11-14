@@ -79,15 +79,29 @@ to allow this function call to be dynamic , i.e. using any login credentials.
 	        $stmt = $dbh->prepare($query_string2);
 		$stmt->bindParam(':un', $user_name, PDO::PARAM_STR);
 		$stmt->execute();
+		
 		$res = $stmt->fetchAll();
 		$res = $res[0];
-		$res = $res['privilege']; //privilege is the name of the column that is returned from procedure call
+		$priv = $res['privilege']; //privilege is the name of the column that is returned from procedure call
+
+		//retrieve the user's user_id
+		$query_string3 = "call Asrcoo.get_user_id(:unn);";
+                
+                $stmt = $dbh->prepare($query_string3);
+                $stmt->bindParam(':unn', $user_name, PDO::PARAM_STR);
+                $stmt->execute();
+                $res = $stmt->fetchAll();
+                $res = $res[0];
+                $res = $res['user_id'];
+
+		//set the current user id
+		$_SESSION['user_id']=$res;
 		//set the loggedIn field to true
 		$_SESSION['logged_in']=1;
 		//pass user privilege
-		$_SESSION['user_privilege']=$res;
+		$_SESSION['user_privilege']=$priv;
 		//pass username
-		$_SESSION['welcome_msg']="Welcome ". $user_name;
+		$_SESSION['welcome_msg']= "Welcome ". $user_name;
 		header("Location: /homepage/homepage.php");
 	}else{
 		$_SESSION['login_error_msg']='Invalid credentials.';

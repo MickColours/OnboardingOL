@@ -24,7 +24,7 @@
     <div class="dropdown">
       <button class="dropbtn">Create a Quiz</button>
       <div class="dropdown-content">
-        <a href="/quizManagement/createQuiz.php">Create Quiz Manually</a>
+        <a href="/editQuiz/createQuizInfo.php">Create Quiz Manually</a>
         <a href="/quizManagement/uploadQuiz.php">Upload Quiz</a>
       </div>
     </div>
@@ -35,7 +35,7 @@
       <button class="dropbtn">Grades</button>
       <div class="dropdown-content">
         <a href="/userInfo/myGrades.php">My Grades</a>
-        <a href="#">My Tests</a>
+        <a href="#">My quizzes</a>
       </div>
   </div>
 

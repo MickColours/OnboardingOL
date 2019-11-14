@@ -39,7 +39,7 @@ session_start();
 	include '../connections/connectEmployee.php';
 	session_start();
 
-	$dbh = ConnectAdmin();
+	$dbh = connectEmployee();
 
 	$query_string = " call Asrcoo.list_visible_quizzes() ";
 
@@ -50,10 +50,16 @@ session_start();
 	foreach($sth->fetchAll() as $row){
 		$table_string .= "<tr>\n";
 		$table_string .= "<td>" . $row['name'] ."</td>\n";
-		/*This will eventually display attempts and average score
 		$table_string .= "<td>" . $row['author'] ."</td>\n";
 		$table_string .= "<td>" . $row['date_created'] ."</td>\n";
-		*/
+		$table_string .= " <td>";
+                $table_string .= " <form action='preQuiz.php' method='get' name='view_quiz'> ";
+		$table_string .= " <input id='submit' class='button' type='submit' value='View Quiz'/> ";
+		$table_string .= " <input type='hidden' id='inspected_quiz_id' name='inspected_quiz_id' value='" . $row['quiz_id'] . "'/>";
+                $table_string .= " <input type='hidden' id='inspected_quiz_name' name='inspected_quiz_name' value='" . $row['name'] . "'/>";
+		$table_string .= " <input type='hidden' id='inspected_user_id' name='inspected_user_id' value='" . $row['author']  .   "'/>";
+                $table_string .= "</form>";
+                $table_string .= " </td>" ;
                 $table_string .= "</tr>\n";
 
 	}

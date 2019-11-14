@@ -13,7 +13,8 @@ BEGIN
 	from Asrcoo.questionTextAnswer as qta
 	join Asrcoo.textAnswer as ta
 	on qta.textAnswer_id = ta.textAnswer_id
-	where qta.question_id = thisQuestion;
+	where qta.question_id = thisQuestion
+	order by ta.textAnswer_id;
 END$$
 
 DELIMITER ;

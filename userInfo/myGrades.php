@@ -1,4 +1,4 @@
-<!- allows data transfer through session -->
+<!-- allows data transfer through session -->
 <?php
 #includes the HTML code for the navigation bar
 include "../homepage/navBar.php"
@@ -26,39 +26,44 @@ session_start();
         <tr id="headerRow">
           <th>Quiz Name</th>
 	  <th>Best Grade</th>
+	  <th>Duration in Minutes</th>
 	  <th>Date Taken</th>
 	  <th>
 	    <!-- creates a text box with the functionality of a search box -->
 	    <input type="text" id="searchBox" onkeyup="myFunction()" placeholder="Search quizzes..">
 	  </th>
 	</tr>
-	<tr>
-	  <td>Sample Quiz</td>
-	  <td>100%</td>
-	  <td>4/20/2069</td>
-	  <td><!-- Intentionally Left Blank --></td>
-	</tr>
-	<tr>
-	  <td>General ASRC Info</td>
-	  <td>85%</td>
-	  <td>4/20/2069</td>
-	  <td><!-- Intentionally Left Blank --></td>
-	</tr>
-	<tr>
-	  <td>Placeholder 1</td>
-	  <td>95%</td>
-	  <td>4/20/2069</td>
-	  <td><!-- Intentionally Left Blank --></td>
-	</tr>
-	<tr>
-	  <td>Placeholder 2</td>
-	  <td>70%</td>
-	  <td>4/20/2069</td>
-	  <td><!-- Intentionally Left Blank --></td>
-	</tr>
+
+<?php
+
+include '../connections/connectEmployee.php';
+session_start();
+$dbh = connectEmployee();
+$user_id = $_SESSION['user_id'];
+$query_string = " call Asrcoo.get_top_user_performances(:uid);";
+$stmt = $dbh->prepare($query_string);
+$stmt->bindParam(':uid', $user_id, PDO::PARAM_INT);
+$stmt->execute();
+$info_string = "";
+
+foreach($stmt->fetchAll() as $row){
+	$grade = $row['grade'];
+	$grade = ($grade*100);
+	
+	$info_string .= "<tr>\n";
+	$info_string .= "<td>" . $row['name'] ."</td>\n";
+	$info_string .= "<td>" . $grade ."%</td>\n";
+	$info_string .= "<td>" . $row['duration_in_minutes'] ."</td>\n";
+	$info_string .= "<td>" . $row['date_taken'] ."</td>\n";
+	$info_string .= "<td><!-- Intentionally left blank --></td>\n";
+	$info_string .= "</tr>\n";
+}
+
+echo $info_string;
+?>
       </table>
     </div>
-  </body>
+</body>
 
 <!-- Javascript code that will enable the textbox to search through table entries and filter out results -->
 

@@ -47,19 +47,17 @@ $quiz_name = $_SESSION['take_name'];
 		Matt
 	-->	
 	<div>
-	<h1> <?php echo "Question: " . ($question_counter+1) ; ?>  </h1>
-		<?php echo $question_text; ?>
+	<h1 class="question"> <?php echo "Question: " . ($question_counter+1) ; ?>  </h1>
+		<p class="question"><?php echo $question_text; ?></p>
 	</div>
 
       <div id="quiz">
 	<?php
 	include 'formatQuestions.php';
-	echo 'this is a test';
 	#pass the current question row in the question matrix
 	#to format the possible answers
 	$answer_options = formatTextAnswers($current_question);
 	echo $answer_options;
-	echo 'over here';
 	?>
       </div>
 

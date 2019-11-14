@@ -13,28 +13,15 @@ include '../homepage/navBar.php'
   <h1 id="tableHeading">Top 3 Quizzes</h1>
     <table class="displayTable" id="top3table">
       <tr id="headerRow">
+	 <tr id="headerRow">
         <th>Quiz Name</th>
         <th>Attempts</th>
-        <th>Average Score</th>
-      </tr>
-      <tr>
-        <td>Sample Quiz</td>
-        <td>20</td>
-        <td>95%</td>
-      </tr>
-      <tr>
-        <td>Jets</td>
-        <td>10</td>
-        <td>88%</td>
-      </tr>
-      <tr>
-        <td>Helicopters</td>
-        <td>5</td>
-        <td>100%</td>
-      </tr>
+	<th>Average Score</th>
+	 </tr>
+	<tr>
 
   <?php
-	 include '../connections/connectAdmin.php';
+	 include '../connections/connectEmployee.php';
         session_start();
 
         $dbh = connectEmployee();
@@ -47,16 +34,11 @@ include '../homepage/navBar.php'
         $table_string= " ";
         foreach($sth->fetchAll() as $row){
                 $table_string .= "<tr>\n";
-                $table_string .= "<td>" . $row['name'] ."</td>\n";
-                $table_string .= "<td>" . $row['author'] ."</td>\n";
-                $table_string .= "<td>" . $row['date_created'] ."</td>\n";
-                $table_string .= " <td>";
-                $table_string .= " <form action='preQuiz.php' method='get' name='view_quiz'> ";
-                $table_string .= " <input id='submit' class='button' type='submit' value='View Quiz'/> ";
-                $table_string .= " <input type='hidden' id='inspected_quiz_name' name='inspected_quiz_name' value='" . $row['name'] . "'/>";
-                $table_string .= " <input type='hidden' id='inspected_quiz_id' name='inspected_quiz_id' value='" . $row['quiz_id']  .   "'/>";
-                $table_string .= " </form>";
-                $table_string .= " </td>" ;
+		$table_string .= "<td>" . $row['name'] ."</td>\n";
+		//In the future this will also list attempts and average scores
+		$table_string .= "<td>" . "12" ."</td>\n";
+		$table_string .= "<td>" . "100%" ."</td>\n";
+		//In the future this will also list attempts and average scores
                 $table_string .= "</tr>\n";
 
         }
@@ -95,7 +77,8 @@ include '../homepage/navBar.php'
       <td>Helicopters</td>
       <td>5</td>
       <td>100%</td>
-    </tr>
+    </div>
+
   </table>
   </div>
 </html>

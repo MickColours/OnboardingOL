@@ -44,6 +44,7 @@ get_quiz_detail(quiz_id)
 	return detailed view of a particular quiz
 
 	*to be used for prequiz page
+	**edit added subjects column
 
 get_quiz_questions(quiz_id)
 	return a datamatrix for a particular quiz
@@ -80,6 +81,12 @@ grade_fixed_textQuestion(question_id,answer_string)
 	the procedure returns either (0 | question point value)
 	*remember, although this returns a scalar , its really .. a datamatrix
 
+add_performance(grade,quiz_id,user_id,duration_in_minutes)
+	insert a row into the performance table
+	with the specified data,
+	the procedure will pump the current date 
+	into the row
+
 
 list_visible_quizzes()
 	return a datamatrix of all quizzes with the visible flag set
@@ -93,6 +100,10 @@ list_user_quizzes(user_id)
 	return a datamatrix of all quizzes that belong
 	to the user id provided
 	*rows returned are 4-tuples (quiz_id , name , date_created, visibility)
+
+get_top_user_performances(user_id)
+	returns a datamatrix
+	of 4-tuples (name ,grade, duration_in_minutes, date_taken)
 
 
 

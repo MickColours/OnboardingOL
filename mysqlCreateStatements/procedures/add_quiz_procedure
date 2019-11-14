@@ -1,0 +1,22 @@
+USE `Asrcoo`;
+DROP procedure IF EXISTS `add_quiz`;
+
+DELIMITER $$
+USE `Asrcoo`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `add_quiz`(thisAuthor_id int, thisTime_limit int, thisName varchar(90), thisDescription varchar(180))
+BEGIN
+	#variable to hold the primary key returned from inserting quiz
+	DECLARE thisQuiz_id int DEFAULT null;
+	#insert quiz into quiz table with invisibility and stamp with current date
+	INSERT INTO Asrcoo.quiz (`author_id`,`name`,`time_limit`,`description`,`visibility`,`date_created`) 
+    VALUES (thisAuthor_id,thisName,thisTime_limit,thisDescription,0,curdate());
+    
+	#store the primary key generated for above quiz
+	set thisQuiz_id =(SELECT LAST_INSERT_ID());
+    #return the generated quiz id . 
+    select thisQuiz_id as 'quiz_id';
+END$$
+
+DELIMITER ;
+
+

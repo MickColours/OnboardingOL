@@ -18,7 +18,18 @@ BEGIN
 		from Asrcoo.question as q
         join Asrcoo.quizQuestion as qq
         on qq.question_id = q.question_id
-        where qq.quiz_id =thisQuiz) as 'total_points'
+        where qq.quiz_id =thisQuiz) as 'total_points',
+        
+        #subquery to get subject string
+        #retrive all quiz subjects, but concatenate them by commas
+        (select GROUP_CONCAT(s.name ORDER BY s.name ASC SEPARATOR ',')
+		from Asrcoo.quiz as q
+		join Asrcoo.quizSubject as qs
+		on q.quiz_id = qs.quiz_id
+		join Asrcoo.subject as s
+		on qs.subject_id = s.subject_id
+		where q.quiz_id = thisQuiz
+		order by q.name) as 'subjects'
         
 	from Asrcoo.quiz as q
 	join Asrcoo.user as u

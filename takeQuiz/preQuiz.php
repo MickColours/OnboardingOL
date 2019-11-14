@@ -13,9 +13,7 @@ session_start();
     <link rel="stylesheet" type="text/css" href="/css/style.css">
   </head>
   <body>
-    <div class="container">
-      <h1 id="tableHeading">Quiz Information</h1>
-	<div class="container" id="quizInfoContainer">
+    <div class="container" id="quizInfoContainer">
 
 <?php
 $inspected_quiz_name = $_GET['inspected_quiz_name'];
@@ -32,14 +30,15 @@ $dbh = connectEmployee();
 #
 #This is functional, but is inconsistent with previous methodology.
 #- Matt
-$query_string = " call Asrcoo.get_quiz_detail('$inspected_quiz_id') ";
+$query_string = " call Asrcoo.get_quiz_detail(:qid) ";
 
 $sth = $dbh->prepare($query_string);
+$sth->bindParam(':qid', $inspected_quiz_id, PDO::PARAM_INT);
 $sth->execute();
 
 foreach($sth->fetchAll() as $row){
 
-	$info_string .="<h1 id='quizInfoHeader'>$inspected_quiz_name</h1>\n";
+	$info_string .="<h1 id='quizInfoHeader'>Quiz Information</h1>\n";
 	$info_string .= "<div class='quizInformation'>\n";
 	$info_string .= "<p class='info'><strong>Quiz Name: </strong>$inspected_quiz_name</p>\n";
 	$info_string .= "</div>\n";
@@ -61,7 +60,10 @@ foreach($sth->fetchAll() as $row){
 	$info_string .= "<div class='quizInformation'>\n";
 	$info_string .= "<p class='info'><strong>Total Points: </strong>" . $row['total_points'] ."</p>\n";
 	$info_string .= "</div>\n";
-	$info_string .= " <td>";
+	$info_string .= "<div class='quizInformation'>\n";
+        $info_string .= "<p class='info'><strong>Subjects: </strong>" . $row['subjects'] ."</p>\n";
+        $info_string .= "</div>\n";
+	$info_string .= " <br>";
         $info_string .= " <form action='http://54.198.147.202/takeQuiz/loadQuiz.php' method='get' name='view_quiz'> ";
 	$info_string .= " <input id='submitButton' class='button' type='submit' value='Take Quiz'/> ";
 
