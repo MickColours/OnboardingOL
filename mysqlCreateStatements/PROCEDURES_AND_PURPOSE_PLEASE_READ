@@ -48,9 +48,10 @@ get_quiz_detail(quiz_id)
 
 get_quiz_questions(quiz_id)
 	return a datamatrix for a particular quiz
-	rows correspond to 3-tuples (question_id ,question_text, question_type) 
+	rows correspond to 5-tuples (question_id ,question_text, question_type,point_value,order) 
 	
 	*to be used for takequiz pages / pre quiz pages
+	*to be used for edit / create quiz pages 
 
 get_user_privilege(user_id)
 	return the user privilege

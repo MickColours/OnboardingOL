@@ -295,3 +295,9 @@ label.possibleAnswer {
   margin-left: 60px;
   font-family:arial;
 }
+
+.createUserCheckbox {
+  position: relative;
+  margin-left: 200px;
+  padding-left:20px;
+  }

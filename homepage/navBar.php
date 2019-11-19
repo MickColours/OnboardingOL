@@ -24,11 +24,11 @@
     <div class="dropdown">
       <button class="dropbtn">Create a Quiz</button>
       <div class="dropdown-content">
-        <a href="/editQuiz/createQuizInfo.php">Create Quiz Manually</a>
+        <a href="/quizManagement/create/createQuizInfo.php">Create Quiz Manually</a>
         <a href="/quizManagement/uploadQuiz.php">Upload Quiz</a>
       </div>
     </div>
-    <a href="/quizManagement/editQuiz.php">
+    <a href="/quizManagement/edit/editQuiz.php">
 	<button class="dropbtn">Edit a Quiz</button>
     </a>
   <div class="dropdown">

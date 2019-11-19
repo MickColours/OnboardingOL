@@ -41,9 +41,7 @@ to this page as mentioned below.
     <input id="createUser" class="input" type="password" name="re_password"
     placeholder="Re-type desired password">
 
-	<!-- YOU DO NOT PUT A FORM INSIDE A FORM ,
-		You can however close the form before the div, 
-		then add a new form outside of this one-->
+    <br><input type="checkbox" class="createUserCheckbox" id="createUserCheckbox" name="mentorCheckbox" value="Mentor">Mentor</input></br>
 
     <input id="submitButton" class='button' type="submit" value="Create User"/>
     </form>

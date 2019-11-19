@@ -1,11 +1,11 @@
 <!-- allows data transfer through session -->
 <?php 
 #includes the HTML code for the navigation bar
-include "../homepage/navBar.php";
+include "../../homepage/navBar.php";
 session_start();
 
 #redirects guests who are not logged in
-include '../accessControl/loggedIn.php';
+include '../../accessControl/loggedIn.php';
 Allowed();
 ?>
 
@@ -35,7 +35,7 @@ Allowed();
 
         <?php
 
-        include '../connections/connectEmployee.php';
+        include '../../connections/connectEmployee.php';
         session_start();
 
         $dbh = connectEmployee();
@@ -52,8 +52,8 @@ Allowed();
                 $table_string .= "<td>" . $row['author'] ."</td>\n";
                 $table_string .= "<td>" . $row['date_created'] ."</td>\n";
                 $table_string .= " <td>";
-                $table_string .= " <form action='preQuiz.php' method='get' name='view_quiz'> ";
-                $table_string .= " <input id='submit' class='button' type='submit' value='View Quiz'/> ";
+                $table_string .= " <form action='http://54.198.147.202/quizManagement/edit/loadEditQuiz.php' method='get' name='view_quiz'> ";
+                $table_string .= " <input id='submit' class='button' type='submit' value='Edit Quiz'/> ";
                 $table_string .= " <input type='hidden' id='inspected_quiz_name' name='inspected_quiz_name' value='" . $row['name'] . "'/>";
                 $table_string .= " <input type='hidden' id='inspected_quiz_id' name='inspected_quiz_id' value='" . $row['quiz_id']  .   "'/>";
                 $table_string .= " </form>";

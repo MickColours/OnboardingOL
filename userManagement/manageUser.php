@@ -62,16 +62,16 @@ echo "<div> Viewing user " . $inspected_user_name  . " with  user_id : " . $insp
 
 <!-- Delete User -->
 <td>
-    <form action='./deleteUser.php' method="get" name="delete_user" onsubmit = "return confirmDelete();">
-    <input onClick="confirmDelete(this.form);" id='submit_delete_user' class='button' type = "submit"  value="Delete User"/>
+    <input onclick="confirmDelete();" id='submit_delete_user' class='button' type = "button"  value="Delete User"/>
     <input type='hidden' id='inspected_user_id' name='inspected_user_id' value='<?php echo $inspected_user_id ?>'/>
     <input type='hidden' id='inspected_user_name' name='inspected_user_name' value='<?php echo $inspected_user_name ?>'/>
- </form>
 </td>
+
+<input type="checkbox" class="createUserCheckbox" id="createUserCheckbox" name="mentorCheckbox" value="Mentor">Mentor</input>
+
 
 </tr>
 </table>
-	<script>
 	<script type="text/javascript">
 	//This function will ask the admin whether or not 
 	//they would like to continue deleting the user
@@ -80,11 +80,11 @@ echo "<div> Viewing user " . $inspected_user_name  . " with  user_id : " . $insp
 
 	var res = confirm("Do you really wish to submit the form contents?");
 
-	if(res)
-		return true;
-	else
-		return false;
-        }
+	if(res){
+		location.href='deleteUser.php?<?php echo "inspected_user_id=" .  $inspected_user_id . "&inspected_user_name=" . $inspected_user_name ?>'; 
+	       }
+	}
+		
 	</script>
 </body>
 </html>
