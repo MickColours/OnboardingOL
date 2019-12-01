@@ -9,6 +9,12 @@ _________
 PROCEDURES
 __________
 
+add_quiz(author_id, time_limit, name, description)
+
+add_quizQuestion(quiz_id, question_text, point_value, DTYPE)
+
+add_textAnswer(question_id, answer_text, validity)
+
 add_user(username,password,privilege)
 
 	username is the truncated email
@@ -18,12 +24,19 @@ add_user(username,password,privilege)
 
 	*used in the validateCreateUser
 	
+delete_quiz(quiz_id)
+
+delete_textAnswers(answerList)
+
+delete_textQuestion(question_id)
 
 delete_user(user_id)
 
 	delete a user from the database
 
 	*used in the delete user pages
+
+edit_quiz_detail(quiz_id, name, description, time_limit)
 
 get_possible_textAnswers(question_id)
 	return a datamatrix for a textQuestions potential answers
@@ -37,8 +50,6 @@ get_correct_textAnswers_procedure(question_id)
 	return a datamatrix of a textQuestions correct answer set
 	the rows correspond to 2-tupes which are formatted (textAnswer_id, answer_text)
 	
-
-
 get_quiz_detail(quiz_id)
 
 	return detailed view of a particular quiz
@@ -52,6 +63,10 @@ get_quiz_questions(quiz_id)
 	
 	*to be used for takequiz pages / pre quiz pages
 	*to be used for edit / create quiz pages 
+
+get_top_user_performances(user_id)
+
+get_user_id(user_name)
 
 get_user_privilege(user_id)
 	return the user privilege
@@ -81,6 +96,8 @@ grade_fixed_textQuestion(question_id,answer_string)
 	
 	the procedure returns either (0 | question point value)
 	*remember, although this returns a scalar , its really .. a datamatrix
+
+grade_unfixed_textQuestion(question_id, answer_string)
 
 add_performance(grade,quiz_id,user_id,duration_in_minutes)
 	insert a row into the performance table

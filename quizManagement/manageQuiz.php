@@ -1,11 +1,14 @@
-<!-- allows data transfer through session -->
+<!-- allows data transfer through session
+	Authors: Victor , ? , Matt
+
+ -->
 <?php 
 #includes the HTML code for the navigation bar
-include "../../homepage/navBar.php";
+include "../homepage/navBar.php";
 session_start();
 
 #redirects guests who are not logged in
-include '../../accessControl/loggedIn.php';
+include '../accessControl/loggedIn.php';
 Allowed();
 ?>
 
@@ -19,14 +22,14 @@ Allowed();
   <body>
     <!-- creates a container that will display the contents of the page -->
     <div class="container">
-      <h1 id="tableHeading">Edit a Quiz</h1>
+      <h1 id="tableHeading">Manage a Quiz</h1>
       <!-- creates a table that will display a list of quizzes to be edited
            each entry will contain a button which redirects to quiz editing -->
       <table class="displayTable" id="quizTable">
 	<tr id="headerRow">
-	  <th>Quiz Name</th>
+	  <th style="width:45%;">Quiz Name</th>
 	  <th>Author</th>
-	  <th>Date Created</th>
+	  <th style="width:15%">Date Created</th>
 	  <th>
 	    <!-- creates a tet box with the functionality of a search box -->
 	    <input type="text" id="searchBox" onkeyup="myFunction()" placeholder="Search Quizzes">
@@ -35,13 +38,17 @@ Allowed();
 
         <?php
 
-        include '../../connections/connectEmployee.php';
+        include '../connections/connectEmployee.php';
         session_start();
 
         $dbh = connectEmployee();
 
-        $query_string = " call Asrcoo.list_user_quizzes(" . $_SESSION['user_id'] . ") "; #REPLACE PROCEDURE WITH PROCEDURE THAT DISPLAYS ONLY QUIZZES THE USER OWNS
-
+	//check the user privileges 
+	if ($_SESSION['user_privilege']==2){ //mentors get to see all quizzes
+		$query_string = " call Asrcoo.list_all_quizzes();"; 
+	}else { //employees get to see only there quizzes	
+		$query_string = " call Asrcoo.list_user_quizzes(" . $_SESSION['user_id'] . ") ";
+	}
         $sth = $dbh->prepare($query_string);
         $sth->execute();
 
@@ -49,15 +56,30 @@ Allowed();
         foreach($sth->fetchAll() as $row){
                 $table_string .= "<tr>\n";
                 $table_string .= "<td>" . $row['name'] ."</td>\n";
-                $table_string .= "<td>" . $row['author'] ."</td>\n";
+		$table_string .= "<td>" . $row['author'] ."</td>\n"; #in the future maybe mentors can manage
                 $table_string .= "<td>" . $row['date_created'] ."</td>\n";
-                $table_string .= " <td>";
-                $table_string .= " <form action='http://54.198.147.202/quizManagement/edit/loadEditQuiz.php' method='get' name='view_quiz'> ";
-                $table_string .= " <input id='submit' class='button' type='submit' value='Edit Quiz'/> ";
-                $table_string .= " <input type='hidden' id='inspected_quiz_name' name='inspected_quiz_name' value='" . $row['name'] . "'/>";
+		$table_string .= " <td>";
+		//edit quiz form
+                $table_string .= " <form class='manageButton' action='http://54.198.147.202/quizManagement/edit/loadEditQuiz.php' method='get' name='view_quiz'> ";
+		$table_string .= " <input id='editQuizButton' class='button' type='submit' value='Edit Quiz'/> ";
+		$table_string .= " <input type='hidden' id='inspected_quiz_name' name='inspected_quiz_name' value='" . $row['name'] . "'/>";
                 $table_string .= " <input type='hidden' id='inspected_quiz_id' name='inspected_quiz_id' value='" . $row['quiz_id']  .   "'/>";
-                $table_string .= " </form>";
-                $table_string .= " </td>" ;
+		$table_string .= " </form>";
+		//toggle quiz visibility, add logic, to change button value .. 
+		$table_string .= " <form class='manageButton' action='http://54.198.147.202/quizManagement/toggleQuizVisibility.php' method='get' name='view_quiz'> ";
+		$table_string .= " <input id='visibilityButton' class='button' type='submit' style='width:100px' value='Toggle Visibility'/> ";
+		$table_string .= " <input type='hidden' id='inspected_quiz_id' name='inspected_quiz_id' value='" . $row['quiz_id']  .   "'/>";
+		$table_string .= " </form>";
+
+		//remove quiz
+		$table_string .= " <form class='manageButton' action='http://54.198.147.202/quizManagement/deleteQuiz.php' method='get' name='view_quiz'> ";
+		$table_string .= " <input id='deleteButton' class='button' type='submit' value='Delete'/> ";
+		$table_string .= " <input type='hidden' id='inspected_quiz_id' name='inspected_quiz_id' value='" . $row['quiz_id']  .   "'/>";
+		$table_string .= " </form>";
+
+		$table_string .= " </td>" ;
+
+
                 $table_string .= "</tr>\n";
 
         }

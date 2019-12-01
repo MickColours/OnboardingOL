@@ -9,8 +9,6 @@ Upon arrival from the manageUser.php page from a clicked button
 The php $_SESSION variable is loaded and the inspect_user_id is retrieved
 from it
 
-#TODO : figure out how to confirm user deletion!
-
 -->
 
 <!-- allow data transfer through session variables -->
@@ -39,9 +37,41 @@ include '../homepage/navBar.php';
 <!-- retrieve the name of the currently inspected user and print out a div with it-->
 <tr>
 <?php 
+
+include '../connections/connectUser.php';
+session_start();
+
 $inspected_user_name = $_GET['inspected_user_name']; 
 $inspected_user_id = $_GET['inspected_user_id'];
-echo "<div> Viewing user " . $inspected_user_name  . " with  user_id : " . $inspected_user_id . "  </div>"
+echo "<div> Viewing user " . $inspected_user_name  . " with  user_id : " . $inspected_user_id . "  </div>";
+
+
+$dbh = ConnectUser();
+
+
+$query_string = " call Asrcoo.get_user_privilege(:un); ";
+$sth = $dbh->prepare($query_string);
+$sth->bindParam(':un', $inspected_user_name, PDO::PARAM_STR);
+$sth->execute();
+
+//This table string is the user's priv
+//if it is equivalent to 1 that user is an employee
+//if it is equivalent to 2 that user is a mentor
+$table_string = "";
+
+$result = $sth->fetchAll();
+$result = $result[0];
+
+$table_string = $result['privilege'];
+
+$stripped = trim($table_string);
+
+if($table_string == "2"){
+	echo "<input type='checkbox' class='createUserCheckbox' id='createUserCheckbox' name='mentorCheckbox' value='Mentor' checked>Mentor</input>";
+} else{
+	echo "<input type='checkbox' class='createUserCheckbox' id='createUserCheckbox' name='mentorCheckbox' value='Mentor'>Mentor</input>";
+}
+ 
 ?>
 </tr>
 
@@ -49,14 +79,14 @@ echo "<div> Viewing user " . $inspected_user_name  . " with  user_id : " . $insp
 <!-- View Metrics -->
 <td>
 <form action='../???' method="get" name="view_metrics">
-    <input id='submit_view_metrics' class='button' type="submit"  value="View Metrics"/>
+    <input id='submit_view_metrics' class='button' type="submit" style="width:100px" value="View Metrics"/>
  </form>
 </td>
 
 <!-- Change Password ??? why -->
 <td>
-<form action='../???' method="get" name="change_password">
-    <input id='submit_change_password' class='button' type="submit"  value="Change Password"/>
+<form action='changePassword.php' method="get" name="change_password">
+    <input id='submit_change_password' class ='button' style="width:120px" type="submit"  value="Change Password"/>
 </form>
 </td>
 
@@ -67,9 +97,6 @@ echo "<div> Viewing user " . $inspected_user_name  . " with  user_id : " . $insp
     <input type='hidden' id='inspected_user_name' name='inspected_user_name' value='<?php echo $inspected_user_name ?>'/>
 </td>
 
-<input type="checkbox" class="createUserCheckbox" id="createUserCheckbox" name="mentorCheckbox" value="Mentor">Mentor</input>
-
-
 </tr>
 </table>
 	<script type="text/javascript">
@@ -78,7 +105,7 @@ echo "<div> Viewing user " . $inspected_user_name  . " with  user_id : " . $insp
 	//this comes in the form of a pop up box
 	function confirmDelete() {
 
-	var res = confirm("Do you really wish to submit the form contents?");
+	var res = confirm("Do you really wish to delete this user?");
 
 	if(res){
 		location.href='deleteUser.php?<?php echo "inspected_user_id=" .  $inspected_user_id . "&inspected_user_name=" . $inspected_user_name ?>'; 

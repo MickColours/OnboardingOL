@@ -24,24 +24,22 @@ to this page as mentioned below.
   <head> <title> Create a User </title> </head>
   <link rel="stylesheet" type="text/css" href="/css/style.css">
   <div id="createUserBox" class="container">
-    <h1 id="tableHeading"> Create a New User </h1>
-
-
+    <h1 id="quizInfoHeader"> Create a New User </h1><br>
  <form action='validateCreateUser.php' method="get" name="add_user_request">
 
-    <input id="createUser" class="input" type="text" name="user_name"
+    <input id="createUser" class="createUserForm" type="text" name="user_name"
     placeholder="Enter employee's email">
     
-    <input id="createUser" class="input" type="text" name="re_user_name"
+    <input id="createUser" class="createUserForm" type="text" name="re_user_name"
     placeholder="Re-enter employee's email">
     
-    <input id="createUser" class="input" type="password" name="password"
+    <input id="createUser" class="createUserForm" type="password" name="password"
     placeholder="Type desired password">
     
-    <input id="createUser" class="input" type="password" name="re_password"
+    <input id="createUser" class="createUserForm" type="password" name="re_password"
     placeholder="Re-type desired password">
 
-    <br><input type="checkbox" class="createUserCheckbox" id="createUserCheckbox" name="mentorCheckbox" value="Mentor">Mentor</input></br>
+    <br><input type="checkbox" class="createUserCheckbox" id="createUserCheckbox" name="mentorCheckbox" value="true">Mentor</input></br>
 
     <input id="submitButton" class='button' type="submit" value="Create User"/>
     </form>

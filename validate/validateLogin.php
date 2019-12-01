@@ -30,37 +30,6 @@ to allow this function call to be dynamic , i.e. using any login credentials.
 	$authentication_string = trim($authentication_string);
 	$dbh = ConnectUser();
 
-	#old method , no hashing
-
-	/*	
-	//note Asrcoo.verifyLogin() should be recoded as a procedure since by defintion it
-	//is not a function		
-	//build query string
-	$query_string = " select Asrcoo.verifyLogin(:uid,:as) as result";
-	$stmt = $dbh->prepare($query_string);
-	
-	//since our query dynamically changes based on the user input
-	//we must use bindParam to substitute the php variabls into
-	//the query string we constructed and prepared
-	
-	$stmt->bindParam(':uid', $user_id, PDO::PARAM_STR); //dereference :uid
-	$stmt->bindParam(':as', $authentication_string, PDO::PARAM_STR); //dereference :as
-
-
-	$stmt->execute();
-	#queries return arrays of arrays, this function returns a scalar  so 
-
-	//retrieve data matrix from query
-	$result =$stmt->fetchAll();
-	//index the first (and only row returned from this function)
-	$result = $result[0];
-	//index the field I called this 'result' as indicated in query_string 
-	$result = $result['result'];
-	*/ 
-
-	
-	
-	#new method with hashing
 	$query_string = " call Asrcoo.get_authentication_string(:un);";
 	$stmt = $dbh->prepare($query_string);
 	$stmt->bindParam(':un', $user_name, PDO::PARAM_STR);
@@ -70,7 +39,6 @@ to allow this function call to be dynamic , i.e. using any login credentials.
 	$hash = $result['hash'];
 	$valid = password_verify($authentication_string,$hash);
 		
-	#if ($result==1){
 	if ($valid){
 		//note with header, it will not work if you output content before user
 		//redirection
@@ -100,6 +68,8 @@ to allow this function call to be dynamic , i.e. using any login credentials.
 		$_SESSION['logged_in']=1;
 		//pass user privilege
 		$_SESSION['user_privilege']=$priv;
+		//pass user name -Victor
+		$_SESSION['user_name']=$user_name;
 		//pass username
 		$_SESSION['welcome_msg']= "Welcome ". $user_name;
 		header("Location: /homepage/homepage.php");

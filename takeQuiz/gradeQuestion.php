@@ -1,4 +1,6 @@
+
 <?php
+include "../homepage/navBar.php";
 
 //Author : Matt Date : 11/11
 session_start();
@@ -6,9 +8,6 @@ session_start();
 //grade question
 
 //add points
-
-#$check_count = count($_GET['answer']);
-#echo $check_count;
 
 #grab question type and question id
 $question_type = $_GET['question_type'];
@@ -70,31 +69,56 @@ $result = $result[0]; #grab the first row
 $points_awarded = $result['points_earned']; #grab the return value
 
 
-#tests ...
-#echo "Points Earned: " . $result;
-#echo $question_id . " " . $question_type;
-#echo "Answerstring : " .$answer_id_string;
-
-
-
 //increment the score
 $_SESSION['take_current_points']+=$points_awarded;
 
 //increment question counter
 $_SESSION['take_question_counter'] = $_SESSION['take_question_counter']+1;
 
+
+#######################################
+##code for displaying the correct answer
+########################################
+	
+//format the correct answer
+$query_string  = " call Asrcoo.get_correct_textAnswers(:qid); ";
+$sth = $dbh->prepare($query_string);
+$sth->bindParam(':qid',  $question_id, PDO::PARAM_INT);
+$sth->execute();
+
+$result =  $sth->fetchAll();
+
+$correct_answer_string = '';
+foreach($result as $row){
+	$correct_answer_string .= $row['answer_text'] . "<br>";
+}
+
+
+
+ #######################################
+ #User redirection
+ #######################################
+
+//change form direction dependant if questions remain
 if($_SESSION['take_question_counter'] != $_SESSION['take_number_of_questions']){
+	$form_string = "<form method='get' action='answerQuestions.php'>";
+	$form_string .= "<input id='nextQuestionSubmit' class='button' type='submit' value='next question'/>";
+}else{
+	$form_string =  "<form method='get' action='postQuiz.php'>";
+	$form_string .= "<input id='nextQuestionSubmit' class='button' type='submit' value='view grade'/>";
+}
 
-//in the future the execution of the script will
-//bring the user to a page identicat to the one before
-//but with there select filled with there answer choice
-//in some way
-//
-//and the correct answer choice displayed below
-//for sake of functionality it just grades the question
-//and moves onto the next one
-//
+$form_string .= "</form>";
+$content = "<table> <div> " . $correct_answer_string . " " . $form_string . "</div> </table>";
+echo $content;
 
+
+/*
+####################################################
+#OLD METHOD , NO ANSWER DISPLAY , JUST REDIRECATION
+####################################################
+
+if($_SESSION['take_question_counter'] != $_SESSION['take_number_of_questions']){
 header("Location: http://54.198.147.202/takeQuiz/answerQuestions.php");
 #will be changed later to redirect to a post quiz page
 #where score is presented
@@ -102,4 +126,14 @@ header("Location: http://54.198.147.202/takeQuiz/answerQuestions.php");
 	header("Location: http://54.198.147.202/takeQuiz/postQuiz.php");
 }
 
+*/
+
 ?>
+
+
+
+
+
+
+
+

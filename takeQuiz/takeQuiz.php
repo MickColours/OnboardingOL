@@ -22,8 +22,8 @@ session_start();
       <!-- each entry will contain a button that will redirect to a preQuiz screen for that quiz -->
       <table class="displayTable" id="quizTable">
         <tr id="headerRow"> 
-	  <th>Quiz Name</th>
-	  <th>Quiz Author</th>
+	  <th style="width:40%;">Quiz Name</th>
+	  <th style="width:20%;">Quiz Author</th>
 	  <th>Date Created</th>
 	  <th>
 	    <!-- creates a text box with the functionality of a search box -->

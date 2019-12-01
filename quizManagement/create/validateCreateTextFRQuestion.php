@@ -1,31 +1,18 @@
 <?php
 
-$answer_elements = $_GET['last_answer_ndx'];
-
-
-//print out the questin text and point value
-echo $_GET['questionText'];
-echo "<br>";
-echo $_GET['questionPoints'];
-echo "<br>";
-echo $_GET['answer'];
-echo "<br>";
-
+session_start();
 
 //grab question text, trim leading and trailing whitespace
-$question=$_GET['questionText'];
+$question=trim($_GET['questionText']);
 
 //grab point value, ensure it is integer, it should be
-//based on the preceding html element
 $points=$_GET['questionPoints'];
 
-//grab answer , trim leading and trailing whitespace
-$answer=$_GET['answer'];
+//grab answer , trim leading and trailing whitespae
+$answer= trim($_GET['answer']);
 
 //grab the curent quiz_id from the edit_quiz session variable
-//for now use some test : quiz c : quiz_id = 3
-$quiz_id = 3;
-
+$quiz_id = $_SESSION['edit_quiz_id'];
 
 //add the quizQuestion to the mysql database
 //include the function create in connectUser.php
@@ -58,5 +45,6 @@ $stmt->bindParam(':ans', $answer, PDO::PARAM_STR);
 $stmt->execute();
 $result = $stmt->fetchAll();
 
+header("Location: http://54.198.147.202/quizManagement/edit/editQuizOverview.php");
 
 ?>

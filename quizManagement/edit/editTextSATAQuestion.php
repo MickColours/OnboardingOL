@@ -82,8 +82,8 @@ and decide what is to be removed,kept and updated
 	
 		$answer_string .= "<label> Answer: </label>";
 		//input answer
-		$answer_string .= "<input type='text' name='answerText" . $answer_ndx . "' value='" . addslashes($row['answer_text'])  .  "'>";
-		$answer_string .= "<input type='radio' name='correctAnswer' value='" . $answer_ndx . "'";
+		$answer_string .= "<input type='text' name='answerText" . $answer_ndx . "' id='' value='" . $row['answer_text']  .  "'>";
+		$answer_string .= "<input type='checkbox' name='correctAnswer[]' value='" . $answer_ndx . "'";
 		//if the answer is valid make it the default checked option
 		if($row['validity']==1){
 			$answer_string .= " checked >";
@@ -107,7 +107,7 @@ and decide what is to be removed,kept and updated
 ?>	
 
       </div>
-      <form action='validateEditTextMCQuestion.php' method='get'> <!-- will redirect to code that adds the question and answer -->
+      <form action='validateEditTextSATAQuestion.php' method='get'> <!-- will redirect to code that adds the question and answer -->
 	<?php  
 	echo $question_string;
 	echo $answer_string;
@@ -156,10 +156,10 @@ and decide what is to be removed,kept and updated
 		let i1name = 'answerText'.concat(answerndx); //create an indexable name
 		i1.setAttribute('name',i1name);
 
-		var i3 = document.createElement("input");
-                i3.setAttribute('type','radio');
-                i3.setAttribute('name','correctAnswer');
-                i3.setAttribute('value',answerndx);	
+		var i3 = document.createElement("input"); //input element, text Validity
+                i3.setAttribute('type',"checkbox");
+                i3.setAttribute('name','correctAnswer[]'); //checkbox have unique names
+                i3.setAttribute('value',answerndx);//will check if the value of each box is correct
 
 
 		var i5 = document.createElement("button"); //delete button

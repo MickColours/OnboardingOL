@@ -37,8 +37,8 @@ and decide what is to be removed,kept and updated
   </head>
 
   <body>
-    <div class="container" id="editQuizQuestionContainer">
-      <h4 id='editQuestionHeader'>Create Question</h4>
+    <div class="container" id="addQuestionContainer">
+      <h1 id='quizInfoHeader'>Create Question</h1>
 	
       <!-- Answer format -->      
       <div id="createTextMCQuestion">
@@ -47,9 +47,9 @@ and decide what is to be removed,kept and updated
 	
 	//format question inputs
 	$question_string = "<p class='info'><strong>Question Text: </strong>";
-	$question_string .= "<textarea name='questionText' rows='5' cols='60'>" . $question_mat['question_text'] . "</textarea> </p>"; 
+	$question_string .= "<textarea style='margin: -20px 0px 0px 120px;' name='questionText' rows='5' cols='60'>" . $question_mat['question_text'] . "</textarea> </p>"; 
       	$question_string .= "<p class='info'><strong>Point Value: </strong> ";
-	$question_string .= "<input name='questionPoints' type='number' min='0' step='1' value='" .  $question_mat['points']  .   "'/> </p>";
+	$question_string .= "<input name='questionPoints' type='number' min='0' step='1' value='" .  $question_mat['points']  .   "'/></p>";
 	//format answer space	
 	$answer_string= "<ol id='answer_list'></ol>";
 	//hid an html tag that will hold an index for the answer
@@ -62,9 +62,9 @@ and decide what is to be removed,kept and updated
 	echo $question_string;
 	echo $answer_string;
 	?>
-	<input id='submit' class='button' type='submit' value='Submit'/>
+	<input id='createQuestion' class='button' type='submit' value='Submit'/>
       </form>
-	<input type='button' value='add answer' onclick=addAnswer()>
+	<input id="createQuestion" class="button" type='button' value='Add Answer' onclick=addAnswer()>
     </div>
 
 
@@ -98,7 +98,7 @@ and decide what is to be removed,kept and updated
 		var entry = document.createElement('li');
 		entry.setAttribute('id','row'.concat(answerndx));
 		var i0 = document.createElement("Label"); //input element, text Answer
-		i0.innerHTML ="answer ";
+		i0.innerHTML ="Answer ";
 	
 
 		var i1 = document.createElement("input"); //input element, text Answer
@@ -106,8 +106,6 @@ and decide what is to be removed,kept and updated
 		let i1name = 'answerText'.concat(answerndx); //create an indexable name
 		i1.setAttribute('name',i1name);
 
-		var i2 = document.createElement("Label"); //input element, text Answer label
-		i2.innerHTML = "Validity"
 
 		/*	
 		var i3 = document.createElement("input"); //input element, text Validity
@@ -145,7 +143,6 @@ and decide what is to be removed,kept and updated
 
 		entry.appendChild(i0);
 		entry.appendChild(i1);
-		entry.appendChild(i2);
 		entry.appendChild(i3);
 		entry.appendChild(i5);
 		entry.appendChild(i6);

@@ -21,15 +21,14 @@ include '../homepage/navBar.php';
 
   <body>
     <!-- creates a container that will have the displayed contents -->
-    <div class = "container" id="userBox">
       <!-- user info table -->
-      <div class="container">
-        <h1 id="tableHeading">User List</h1>
+      <div class="container" id="uploadFileBox">
+        <h1 id="quizInfoHeader">User List</h1><br>
         <table class="displayTable" id="displayTable">
 	<!-- column names -->
 	  <tr id="headerRow">
-	    <th style="width:70%;">User Name</th>
-            <th style="width:30%;">
+	    <th>User Name</th>
+            <th>
 	      <!-- creates a text box with search box functionality -->
               <input type="text" id="searchBar" onkeyup="searchUsers()" placeholder="Search users..">
 	    </th>
@@ -64,7 +63,7 @@ include '../homepage/navBar.php';
 			$table_string .= "<td>" . $row['user_name'] . "</td>\n";
 			$table_string .= " <td>";
 			$table_string .= " <form action='manageUser.php' method='get' name='view_user'> "; 
-			$table_string .= " <input id='submit' class='button' type='submit' value='view user'/> ";
+			$table_string .= " <input id='submit' class='button' type='submit' value='View User'/> ";
 			$table_string .= " <input type='hidden' id='inspected_user_name' name='inspected_user_name' value='" . $row['user_name'] . "'/>";
 			$table_string .= " <input type='hidden' id='inspected_user_id' name='inspected_user_id' value='" . $row['user_id']  .   "'/>";
 			$table_string .= "</form>";
@@ -77,7 +76,6 @@ include '../homepage/navBar.php';
 
 	?>	
     </table>
-      </div>
       <br>
       <!-- buttons that will redirect based on their respective functions -->
       <form action='/homepage/homepage.php'>

@@ -16,10 +16,9 @@ include '../../homepage/navBar.php';
   </head>
 
   <body>
-    <div class="container" id="addQuestionContainer">
-      <h1 id='quizInfoHeader'>Create Free Response Question</h1>
+    <div class="container" id="displayAnswerContainer">
 	
-      <div id="createTextFRQuestion">
+      <div id="displayAnswer">
 
 	<form action='validateCreateTextFRQuestion.php' method='get'> 
 

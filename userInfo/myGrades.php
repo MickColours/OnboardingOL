@@ -26,8 +26,6 @@ session_start();
         <tr id="headerRow">
           <th>Quiz Name</th>
 	  <th>Best Grade</th>
-	  <th>Duration in Minutes</th>
-	  <th>Date Taken</th>
 	  <th>
 	    <!-- creates a text box with the functionality of a search box -->
 	    <input type="text" id="searchBox" onkeyup="myFunction()" placeholder="Search quizzes..">
@@ -47,14 +45,12 @@ $stmt->execute();
 $info_string = "";
 
 foreach($stmt->fetchAll() as $row){
-	$grade = $row['grade'];
+	$grade = $row['max_grade'];
 	$grade = ($grade*100);
 	
 	$info_string .= "<tr>\n";
 	$info_string .= "<td>" . $row['name'] ."</td>\n";
 	$info_string .= "<td>" . $grade ."%</td>\n";
-	$info_string .= "<td>" . $row['duration_in_minutes'] ."</td>\n";
-	$info_string .= "<td>" . $row['date_taken'] ."</td>\n";
 	$info_string .= "<td><!-- Intentionally left blank --></td>\n";
 	$info_string .= "</tr>\n";
 }

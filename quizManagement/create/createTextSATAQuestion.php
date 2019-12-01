@@ -14,15 +14,15 @@ include '../../homepage/navBar.php';
   </head>
 
   <body>
-    <div class="container" id="editQuizQuestionContainer">
-      <h4 id='createQuestionHeader'>Create Multiplce Choice Question</h4>
+    <div class="container" id="addQuestionContainer">
+      <h1 id='quizInfoHeader'>Create Multiple-Response Multiple Choice Question</h1>
 	 
       <div id="createTextMCQuestion">
 
 	<form action='validateCreateTextSATAQuestion.php' method='get'> 
 	<!-- format question inputs -->
 	<p class='info'><strong>Question Text: </strong>
-	<textarea name='questionText' rows='5' cols='60'></textarea> </p>
+	<textarea name='questionText' rows='5' cols='60'></textarea></p>
       	<p class='info'><strong>Point Value: </strong>
 	<input name='questionPoints' type='number' min='0' step='1'/> </p>
 
@@ -32,12 +32,12 @@ include '../../homepage/navBar.php';
 	<input type='hidden' name='last_answer_ndx' id='answer_ndx' value='0'>
 
 	<!-- form sumbit -->
-	<input id='submit' class='button' type='submit' value='Submit'/>
+	<input id='createQuestion' class='button' type='submit' value='Submit'/>
       </form>
 
       </div>
 	<!-- create new answer option -->
-	<input type='button' value='add answer' onclick=addAnswer()>
+	<input id="createQuestion" type='submit' class="button" value='Add Answer' onclick=addAnswer()>
     </div>
 
 
@@ -73,7 +73,7 @@ include '../../homepage/navBar.php';
 		var entry = document.createElement('li');
 		entry.setAttribute('id','row'.concat(answerndx));
 		var i0 = document.createElement("Label"); //input element, text Answer
-		i0.innerHTML ="answer ";
+		i0.innerHTML ="Answer: ";
 	
 
 		var i1 = document.createElement("input"); //input element, text Answer
@@ -81,8 +81,6 @@ include '../../homepage/navBar.php';
 		let i1name = 'answerText'.concat(answerndx); //create an indexable name
 		i1.setAttribute('name',i1name);
 
-		var i2 = document.createElement("Label"); //input element, text Answer label
-		i2.innerHTML = "Validity"
 	
 
 		var i3 = document.createElement("input"); //input element, text Validity
@@ -109,7 +107,6 @@ include '../../homepage/navBar.php';
 
 		entry.appendChild(i0);
 		entry.appendChild(i1);
-		entry.appendChild(i2);
 		entry.appendChild(i3);
 		entry.appendChild(i5);
 		entry.appendChild(i6);

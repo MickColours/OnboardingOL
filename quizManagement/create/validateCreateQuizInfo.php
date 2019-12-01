@@ -15,7 +15,7 @@
 	$time_limit = $_GET['quiz_time_limit']; //add logic to ensure timelimit is valid
 	$time_limit = 0; //overwrite now for debugging purposes
 	$quiz_name = $_GET['quiz_name'];
-	$quiz_description = ['quiz_description'];
+	$quiz_description = $_GET['quiz_description'];
 
 	###############
 	#TEST

@@ -23,8 +23,9 @@ function formatTextAnswers($question_row) {
  include '../connections/connectEmployee.php';
  $dbh = connectEmployee();
  $question_ID = $question_row['question_id'];
- 
- #change to a bindParam based of of question_id in question 3-tuple
+
+//format answer options
+
  $query_answers = " call Asrcoo.get_possible_textAnswers($question_ID) ";
  $ans = $dbh->prepare($query_answers);
  $ans->execute();
@@ -81,12 +82,10 @@ function formatTextAnswers($question_row) {
 
  $possible_answer_string .= "<input id='questionSubmit' class='button' type='submit' value='Submit'/>";
  $possible_answer_string .= "</form>";
+ $possible_answer_string .= "</div>\n";
 
- 
-$possible_answer_string .= "</div>\n";
-
-#return resultant answer options
-return $possible_answer_string;
+ #return resultant correct answer and answer options
+ return $possible_answer_string;
 }
 
 ?>

@@ -1,41 +1,11 @@
 <?php
+session_start();
 
 //get the number of elements in the form list
 //does not reflect the visible answers, but all
 //of them including those that are "deleted" hidden
 $answer_elements = $_GET['last_answer_ndx'];
 
-//print out the questin text and point value
-echo "Question :" . $_GET['questionText'];
-echo "<br>";
-echo "Points :" . $_GET['questionPoints'];
-echo "<br>";
-
-//get the correct answer ndx
-$correct_ndx = $_GET['correctAnswer'];
-echo "correct index :" . $correct_ndx;
-echo "<br>";
-//print out the correct answer contents
-$correct_answer = 'answerText' . $correct_ndx;
-echo "correct answer: " . $_GET[$correct_answer];
-echo "<br>";
-
-
-
-//print out only the form contents that
-//have a deleteFlag set to false
-echo "<br> all answer options <br> <br>";
-for ($i=0; $i < $answer_elements; $i++){
-
-	$answerText = 'answerText' . $i;
-	$deleteFlag = 'deleteFlag' . $i;
-	
-
-	if ($_GET[$deleteFlag]=="false"){	
-	$row =  $_GET[$answerText] . "<br>";
-	echo $row;
-	}
-}
 
 //note the addition of a quizQuestion can be wrapped in a function
 //in a file we include on all create question calls
@@ -45,8 +15,7 @@ for ($i=0; $i < $answer_elements; $i++){
 
 //create a new question in the database with the current edit_quiz_id
 //grab the curent quiz_id from the edit_quiz session variable
-//for now use some test : quiz c : quiz_id = 3
-$quiz_id = 3;
+$quiz_id = $_SESSION['edit_quiz_id'];
 $question = $_GET['questionText'];
 $points = $_GET['questionPoints'];
 
@@ -81,7 +50,7 @@ for ($i=0; $i < $answer_elements; $i++){
 	//only add answers that weren't deleted
 	if ($_GET[$deleteFlagKey]=="false"){	
 		$answer =  $_GET[$answerTextKey]; //grab the answer value
-		if ($i==$GET['correctAnswer']){ //if the answer is correct specify 1 validity
+		if ($i==$_GET['correctAnswer']){ //if the answer is correct specify 1 validity
 			$validity = 1;
 		}else{//else validity is 0
 			$validity = 0;
@@ -100,6 +69,6 @@ for ($i=0; $i < $answer_elements; $i++){
 	}
 }
 
-
+header("Location: http://54.198.147.202/quizManagement/edit/editQuizOverview.php");
 
 ?>

@@ -28,27 +28,19 @@
         <a href="/quizManagement/uploadQuiz.php">Upload Quiz</a>
       </div>
     </div>
-    <a href="/quizManagement/edit/editQuiz.php">
-	<button class="dropbtn">Edit a Quiz</button>
+    <a href="/quizManagement/manageQuiz.php">
+	<button class="dropbtn">Manage a Quiz</button>
     </a>
-  <div class="dropdown">
-      <button class="dropbtn">Grades</button>
-      <div class="dropdown-content">
-        <a href="/userInfo/myGrades.php">My Grades</a>
-        <a href="#">My quizzes</a>
-      </div>
-  </div>
 
 <?php
- 
  $div_string = " <div class='dropdown'>";
- $div_string .= " <button class='dropbtn'>Admin</button> ";
+ $div_string .= " <button class='dropbtn'>Mentor</button> ";
  $div_string .= "<div class='dropdown-content'>";
  $div_string .= "<a href='/userManagement/viewUser.php'>View User</a>";
  $div_string .= "<a href='/userManagement/metrics.php'>Metrics</a>";
+ $div_string .= "<a href='/quizManagement/subjects/managesubjects.php'>Manage Subjects</a>";
  $div_string .= " </div>";
  $div_string .= " </div>";
-
  $current_privilege = $_SESSION['user_privilege'];
  if ($current_privilege==2){
 	 echo $div_string;
@@ -63,10 +55,22 @@
     </a>
 	-->
 
-	<form style="display:inline;" action='http://54.198.147.202/accessControl/logout.php' method='get' name='logout'>
-	<input id='submit' class='dropbtn' type='submit' value='Logout'/>
-	</form>
+<?php
+ $user_name=$_SESSION['user_name'];
+ $name_string .= "";
+ $name_string .= "<div class='dropdown' style='float:right; margin: -3px -3px 0px -50px;'>\n";
+ $name_string .= "<button class='dropbtn'>" . $user_name ."<img src='/src/default-avatar.png' alt='User' style='width:30px; margin:-4px 0px -8px 20px;'/></button>\n";
+ $name_string .= "<div class='dropdown-content' id='options'>\n";
+ $name_string .= "<a href='/userInfo/myGrades.php'>My Grades</a>\n";
+ $name_string .= "<a href='#'>My Quizzes</a>\n";
+ $name_string .= "<form action='http://54.198.147.202/accessControl/logout.php' method='get' name='logout'>\n";
+ $name_string .= "<input id='submit' class='dropdown-content' type='submit' value='Logout'/>\n";
+ $name_string .= "</form>";
+ $name_string .= "</div>\n";
+ $name_string .= "</div>\n";
 
+ echo $name_string;
+?>
 
       </div>
   </header>

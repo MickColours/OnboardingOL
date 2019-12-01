@@ -40,11 +40,12 @@ for ($i=0; $i < $answer_elements; $i++){
 	//only add answers that weren't deleted
 	if ($_GET[$deleteFlagKey]=="false"){	
 		$answer =  $_GET[$answerTextKey]; //grab the answer value
-		if ($i==$_GET['correctAnswer']){ //if the answer is correct specify 1 validity
+		if (in_array($i,$_GET['correctAnswer'])){ //if the answer is correct specify 1 validity
 			$validity = 1;
 		}else{//else validity is 0
 			$validity = 0;
 		}
+		
 		#construct call to Asrcoo.add_textAnswer
 		#add answer to the question_id returned from previous procedure call
 		$query_string = " call Asrcoo.add_textAnswer(:qid,:ans,:val);";
@@ -55,7 +56,7 @@ for ($i=0; $i < $answer_elements; $i++){
 		$stmt->bindParam(':val', $validity, PDO::PARAM_INT);
 		$stmt->execute();
 		$result = $stmt->fetchAll();
-
+		
 	}
 }
 

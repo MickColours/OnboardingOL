@@ -26,7 +26,12 @@ $email1 = $_GET["user_name"];
 $email2 = $_GET["re_user_name"];
 $pass1  = $_GET["password"];
 $pass2  = $_GET["re_password"];
-$priv = 1; //in the future we can pass this through from a select that allows admin creation
+$mentor = $_GET['mentorCheckbox'];
+//determine user privilege
+$priv = 1; 
+if ($mentor == 'true'){
+	$priv = 2;
+}
  
 $valid = verifyCredentials($email1,$email2,$pass1,$pass2);
 
@@ -66,6 +71,22 @@ if ($valid==1){
 	header("Location: /userManagement/createUser.php");
 }
 
+/*
+ $mentorCheck = isset($_POST['mentorCheckBox']);
 
+ $dbh = connectAdmin();
+
+ $queryString = call Asrcoo.(insert php query here to change a user's privilege); ";
+ $stmt = $dbh->prepare(query_string);
+ $stmt->execute();
+
+ if(mentorCheck){
+
+	 $queryString = call Asrcoo.(insert php query here to change a user's privilege); ";
+         $stmt = $dbh->prepare(query_string);
+         $stmt->execute();
+ }
+
+ */
 
 ?>
