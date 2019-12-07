@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Author:Matt 
+Author:Matt,Frank 
 Desc:This page is the view user page. It corresponds to 
  It corresponds to this view in the prototype 
  https://xd.adobe.com/view/0c08b808-171f-4220-6e37-bbdb03b3aec9-7a39/screen/c6593e88-7ff1-492c-80a1-5f7b0cf1c5d0/Viewing-a-User
@@ -67,9 +67,9 @@ $table_string = $result['privilege'];
 $stripped = trim($table_string);
 
 if($table_string == "2"){
-	echo "<input type='checkbox' class='createUserCheckbox' id='createUserCheckbox' name='mentorCheckbox' value='Mentor' checked>Mentor</input>";
+	echo "<div> Mentor Status:  <input type='checkbox' class='createUserCheckbox' id='createUserCheckbox' name='mentorCheckbox' value='Mentor' checked></input></div>";
 } else{
-	echo "<input type='checkbox' class='createUserCheckbox' id='createUserCheckbox' name='mentorCheckbox' value='Mentor'>Mentor</input>";
+	echo "<div> Mentor Status: <input type='checkbox' class='createUserCheckbox' id='createUserCheckbox' name='mentorCheckbox' value='Mentor'></input></div>";
 }
  
 ?>
@@ -86,6 +86,7 @@ if($table_string == "2"){
 <!-- Change Password ??? why -->
 <td>
 <form action='changePassword.php' method="get" name="change_password">
+    <input type='hidden' name='inspected_user_id' value='<?php echo $inspected_user_id ?>'/>
     <input id='submit_change_password' class ='button' style="width:120px" type="submit"  value="Change Password"/>
 </form>
 </td>
@@ -95,6 +96,14 @@ if($table_string == "2"){
     <input onclick="confirmDelete();" id='submit_delete_user' class='button' type = "button"  value="Delete User"/>
     <input type='hidden' id='inspected_user_id' name='inspected_user_id' value='<?php echo $inspected_user_id ?>'/>
     <input type='hidden' id='inspected_user_name' name='inspected_user_name' value='<?php echo $inspected_user_name ?>'/>
+</td>
+
+
+<!-- Change Privilege -->
+<td>
+   <input type='hidden' name='inspected_user_id' value='<?php echo $inspected_user_id ?>'/>
+   <input type='hidden' name='inspected_user_name' value='<?php echo $inspected_user_name ?>'/>
+   <input onclick="confirmChangePrivilege();" id='submit_change_password' class ='button' style="width:130px" type="submit"  value="Change Privilege"/>   
 </td>
 
 </tr>
@@ -109,6 +118,19 @@ if($table_string == "2"){
 
 	if(res){
 		location.href='deleteUser.php?<?php echo "inspected_user_id=" .  $inspected_user_id . "&inspected_user_name=" . $inspected_user_name ?>'; 
+	       }
+	}
+	
+	//This function creates an alert box that
+	//will ask the admin whether or not they
+	//want to continue changing the privilege
+	//of the user
+	function confirmChangePrivilege() {
+
+	var res = confirm("Do you really wish to change this user's privilege?");
+
+	if(res){
+		location.href='changePrivilege.php?<?php echo "inspected_user_id=" .  $inspected_user_id . "&inspected_user_name=" . $inspected_user_name ?>';
 	       }
 	}
 		

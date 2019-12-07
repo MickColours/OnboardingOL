@@ -22,7 +22,7 @@ include '../../homepage/navBar.php';
 	<form action='validateCreateTextSATAQuestion.php' method='get'> 
 	<!-- format question inputs -->
 	<p class='info'><strong>Question Text: </strong>
-	<textarea name='questionText' rows='5' cols='60'></textarea></p>
+	<br><textarea name='questionText' rows='5' cols='60'></textarea></p>
       	<p class='info'><strong>Point Value: </strong>
 	<input name='questionPoints' type='number' min='0' step='1'/> </p>
 

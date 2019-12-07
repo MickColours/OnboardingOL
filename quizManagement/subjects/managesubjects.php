@@ -21,7 +21,14 @@ Allowed();
       <h1 id="quizInfoHeader">Manage Subjects</h1><br>
       <!-- creates a table that will display a list of quizzes to be edited
            each entry will contain a button which redirects to quiz editing -->
-      <table class="displayTable" id="subjectTable">
+
+    <form action = 'http://54.198.147.202/quizManagement/subjects/createSubject.php'>
+
+      <input id='createQuizButton' class='button' type='submit' value='Create Subject'/>
+    </form>
+
+
+    <table class="displayTable" id="subjectTable">
 	<tbody>
         <tr id="headerRow">
           <th style="width:40%">Subject</th>

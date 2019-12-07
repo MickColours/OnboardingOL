@@ -47,7 +47,7 @@ and decide what is to be removed,kept and updated
 	
 	//format question inputs
 	$question_string = "<p class='info'><strong>Question Text: </strong>";
-	$question_string .= "<textarea style='margin: -20px 0px 0px 120px;' name='questionText' rows='5' cols='60'>" . $question_mat['question_text'] . "</textarea> </p>"; 
+	$question_string .= "<br><textarea name='questionText' rows='5' cols='60'>" . $question_mat['question_text'] . "</textarea> </p>"; 
       	$question_string .= "<p class='info'><strong>Point Value: </strong> ";
 	$question_string .= "<input name='questionPoints' type='number' min='0' step='1' value='" .  $question_mat['points']  .   "'/></p>";
 	//format answer space	

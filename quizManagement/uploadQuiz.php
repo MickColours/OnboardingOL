@@ -22,10 +22,10 @@ session_start();
       <h1 id="quizInfoHeader">Upload a Quiz</h1>
       <!-- creates a form that will take in a file
            a submit button will call upon  a procedure to upload the file -->
-      <form>
+      <form action="upload.php" method="POST" enctype="multipart/form-data">
 	<h3 style="text-align:center;">After uploading a .CSV file,<br>Click the Submit Button<br></h1>
 	<div class="inputContainer">
-	 <input type="file" name="name" id="submitFile"><br>        
+	 <input type="file" name="fileToUpload" id="submitFile" accept=".csv"><br>        
 	 <input class ='button' type="submit" value="Submit" id="submitButton" style="width:95%;margin-right:9px;">
 	</div>
       </form>

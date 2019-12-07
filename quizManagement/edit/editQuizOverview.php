@@ -100,11 +100,13 @@ session_start();
 		$table_string .= "</form>";
 		
 		//view
+		/*
 		$table_string .= "<form class='manageButton' action='' method='get'>";
 		$table_string .= "<input type='hidden' value='" .  $row['question_id'] . "'>\n"; 
 		$table_string .= "<input type='submit' class='button' value='view'>";
 		$table_string .= "</form>";
 		$table_string .= "</td>\n";
+		*/
 
 		$table_string .= "<td></td>\n";
                 $table_string .= "</tr>\n";
@@ -133,6 +135,9 @@ session_start();
         <form action='http://54.198.147.202/quizManagement/edit/editQuizInfo.php'>
 	    <input type="submit" value="Edit Quiz Information"></button>
 	</form>
+	 <form action='http://54.198.147.202/quizManagement/edit/editQuizSubjects.php'>
+            <input type="submit" value="Edit Quiz Subjects"></button>
+        </form>
           </td>
         </tr>	
       </table>
