@@ -13,9 +13,9 @@ include '../../homepage/navBar.php';
     <h1 id='quizInfoHeader'>Create a Subject</h1>
 
  <form action = 'http://54.198.147.202/quizManagement/subjects/validateCreateSubject.php'>
-    <p class='info'><strong>Subject Name: </strong> <input type='text' name='quiz_name' id='quiz_name'>   </input>  </p>
+    <p class='info'><strong>Subject Name: </strong> <input type='text' name='subject_name' id='subject_name'>   </input>  </p>
 
-      <input id='createQuizButton' class='button' type='submit' value='Create'/>
+      <input id='submitButton' class='button' type='submit' value='Create'/>
     </form>
 
    </div>

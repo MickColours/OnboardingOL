@@ -76,6 +76,19 @@ $_SESSION['take_current_points']+=$points_awarded;
 $_SESSION['take_question_counter'] = $_SESSION['take_question_counter']+1;
 
 
+ #######################################
+ #session time out
+ #######################################
+
+//if the user has exceeded the alotted quiz time redirect them to the take quiz page 
+$stime = $_SESSION['quiz_start_time'];
+$duration =  microtime(true) - $stime;
+$duration = $duration / 60;
+if ($duration > $_SESSION['take_time_limit']){
+	//return to take quiz page
+	header("Location: http://54.198.147.202/takeQuiz/takeQuiz.php");
+}
+
 #######################################
 ##code for displaying the correct answer
 ########################################
@@ -88,29 +101,36 @@ $sth->execute();
 
 $result =  $sth->fetchAll();
 
-$correct_answer_string = '';
+$correct_answer_string = "<p id='correctAnswerText'><strong>Correct Answer(s):</strong><br><br>";
 foreach($result as $row){
-	$correct_answer_string .= $row['answer_text'] . "<br>";
+	$correct_answer_string .= "&nbsp&nbsp&nbsp&nbsp" . $row['answer_text'] . "<br>";
 }
-
-
+$correct_answer_string .= "</p>";
 
  #######################################
- #User redirection
+ #user redirection dependant on remaining questions
  #######################################
+
 
 //change form direction dependant if questions remain
 if($_SESSION['take_question_counter'] != $_SESSION['take_number_of_questions']){
 	$form_string = "<form method='get' action='answerQuestions.php'>";
-	$form_string .= "<input id='nextQuestionSubmit' class='button' type='submit' value='next question'/>";
+	$form_string .= "<input id='nextQuestionSubmit' class='button' type='submit' style='width:100px; margin:12px 0px 12px 20px;' value='Next Question'/>";
 }else{
 	$form_string =  "<form method='get' action='postQuiz.php'>";
-	$form_string .= "<input id='nextQuestionSubmit' class='button' type='submit' value='view grade'/>";
+	$form_string .= "<input id='nextQuestionSubmit' class='button' type='submit' style='width:100px; margin:12px 0px 12px 20px;' value='View Results'/>";
 }
 
+
+if($points_awarded != 0){
+ $result_string = "<h1 id='grade'>Correct Answer!</h1>";
+ }else{
+ $result_string = "<h1 id='badGrade'> Incorrect Answer.</h1>";
+ }
+
 $form_string .= "</form>";
-$content = "<table> <div> " . $correct_answer_string . " " . $form_string . "</div> </table>";
-echo $content;
+$content = "<table> <div class='container' id='quizInfoContainer'> <h1 id='quizInfoHeader'>Answer</h1> " . $result_string . " " . $correct_answer_string . " " . $form_string . " </div> </table>";
+echo $content; //display redirection link
 
 
 /*

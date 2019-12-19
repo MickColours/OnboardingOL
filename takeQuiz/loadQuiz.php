@@ -38,6 +38,11 @@ $_SESSION['take_total_points'] = $current_quiz_total_points;
 $_SESSION['take_question_counter']=0;
 $_SESSION['take_current_points']=0;
 $_SESSION['take_question_matrix'] = $result;
+//vars for recording quiz duration
+$_SESSION['quiz_start_time']=microtime(true);
+
+
+
 
 header("Location: http://54.198.147.202/takeQuiz/answerQuestions.php");
 

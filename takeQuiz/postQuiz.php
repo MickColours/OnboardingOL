@@ -17,7 +17,10 @@ $total = $_SESSION['take_total_points'];
 $quiz_name = $_SESSION['take_name'];
 
 #timing to be implemented
-$elapsed_time = 12;
+$current_time = microtime(true);
+$elapsed_time = $current_time - $_SESSION['quiz_start_time'];
+$elapsed_time = $elapsed_time / 60; //convert to minutes
+$elapsed_time = round($elapsed_time,0); //convert to integer
 
 #calculate grade
 $grade = ($earned / $total);

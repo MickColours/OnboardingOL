@@ -36,9 +36,16 @@
  $div_string = " <div class='dropdown'>";
  $div_string .= " <button class='dropbtn'>Mentor</button> ";
  $div_string .= "<div class='dropdown-content'>";
- $div_string .= "<a href='/userManagement/viewUser.php'>View User</a>";
- $div_string .= "<a href='/userManagement/metrics.php'>Metrics</a>";
+ $div_string .= "<a href='/userManagement/viewUser.php'>Manage User</a>";
  $div_string .= "<a href='/quizManagement/subjects/managesubjects.php'>Manage Subjects</a>";
+ $div_string .= " </div>";
+ $div_string .= " </div>";
+ $div_string .= " <div class='dropdown'>";
+ $div_string .= " <button class='dropbtn'>Metrics</button> ";
+ $div_string .= "<div class='dropdown-content'>";
+ $div_string .= "<a href='/metrics/metricsByUser.php'>By User</a>";
+ $div_string .= "<a href='/metrics/metricsByQuiz.php'>By Quiz</a>";
+ $div_string .= "<a href='/metrics/metricsBySubject.php'>By Subject</a>";
  $div_string .= " </div>";
  $div_string .= " </div>";
  $current_privilege = $_SESSION['user_privilege'];
@@ -62,7 +69,7 @@
  $name_string .= "<button class='dropbtn'>" . $user_name ."<img src='/src/default-avatar.png' alt='User' style='width:30px; margin:-4px 0px -8px 20px;'/></button>\n";
  $name_string .= "<div class='dropdown-content' id='options'>\n";
  $name_string .= "<a href='/userInfo/myGrades.php'>My Grades</a>\n";
- $name_string .= "<a href='#'>My Quizzes</a>\n";
+ $name_string .= "<a href='/metrics/myQuizMetrics.php'>My Quiz Metrics</a>\n";
  $name_string .= "<form action='http://54.198.147.202/accessControl/logout.php' method='get' name='logout'>\n";
  $name_string .= "<input id='submit' class='dropdown-content' type='submit' value='Logout'/>\n";
  $name_string .= "</form>";

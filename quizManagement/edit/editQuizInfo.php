@@ -39,7 +39,7 @@ include '../../homepage/navBar.php';
 	$form_string .= "<p class='info'><strong>Description: </strong>";
 	$form_string .= "<br><textarea name='quiz_description'  id='quiz_description' rows='10' cols='50' class = 'descriptionTextBox'>";
 	$form_string .= $description_string ."</textarea></p>";
- 	$form_string .= "<p class='info'><strong>Time limit: </strong> <input type='text' name='quiz_time_limit' value='" . $time_limit_string  ."' id='quiz_time_limit'></p>";
+ 	$form_string .= "<p class='info'><strong>Time limit in minutes: </strong> <input type='text' name='quiz_time_limit' value='" . $time_limit_string  ."' id='quiz_time_limit'></p>";
     	$form_string .= "<input style='padding:5px 80px 5px 5px;' id='createQuizButton' class='button' type='submit' value='Submit Edits'/>";
 	$form_string .= "</form>";
 	echo $form_string;

@@ -90,13 +90,13 @@ session_start();
 		$table_string .= "<input type='hidden' name='question_id' value='" .  $row['question_id'] . "'>\n"; 
 		$table_string .= "<input type='hidden' name='question_text' value='" .  $row['question_text'] . "'>\n";
 		$table_string .= "<input type='hidden' name='point_value' value='" .  $row['point_value'] . "'>\n";
-		$table_string .= "<input type='submit' class='button' value='edit'>";
+		$table_string .= "<input type='submit' class='button' value='Edit'>";
 		$table_string .= "</form>";
 
 		#delete questions
 		$table_string .= "<form class='manageButton' action='deleteQuizQuestion.php' method='get'>";
 		$table_string .= "<input type='hidden' name='question_id' value='" .  $row['question_id'] . "'>\n";
-		$table_string .= "<input type='submit' class='button' value='delete'>";
+		$table_string .= "<input type='submit' class='button' value='Delete'>";
 		$table_string .= "</form>";
 		
 		//view
@@ -142,9 +142,12 @@ session_start();
         </tr>	
       </table>
       <br>
+	
+	<!--
       <form>
         <input type="button" value="Finish Edit" class="button" id="submitButton"/>
       </form>
+	-->
     </div>
 
   </body>

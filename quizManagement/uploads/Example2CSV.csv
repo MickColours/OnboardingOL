@@ -1,0 +1,6 @@
+SATA,5,Which of the following are mammals?,Pigs;Ants;Bears;Birds,1;3
+MC,5,The answer is 3,1;2;3;4,3
+FR,5,The answer is pineapple,pineapple,1
+MC,5,What is 2 + 2?,2;3;4;22,3
+FR,5,The answer is banana,banana,1
+SATA,5,Which of the following are the color blue?,The sky;Grass;The Ocean;A blue crayon; A white car,1;3;4

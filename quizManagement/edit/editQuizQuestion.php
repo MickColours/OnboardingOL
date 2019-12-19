@@ -13,7 +13,7 @@ include '../../homepage/navBar.php';
     <div class="container" id="editQuizQuestionContainer">
       <h1 id='editQuestionHeader'>Edit Question</h1>
       <p class='info'><strong>Question Text: </strong> <input type='text' name='question' id='editQuestionText'/> </p>
-      <p class='info'><strong>Point Value: </strong> <input type='number' min="0" step="1"/> </p>
+      <p class='info'><strong>Point Value: </strong> <input type='number' min="1" step="1"/> </p>
       
       <div id="editQuestion">
       <?php

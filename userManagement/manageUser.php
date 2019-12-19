@@ -32,10 +32,8 @@ include '../homepage/navBar.php';
 </head>
 
 <body>
-<table>
-
-<!-- retrieve the name of the currently inspected user and print out a div with it-->
-<tr>
+    <div class="container" id="viewUserContainer">
+      <h1 id="viewUserHeader">View User</h1>
 <?php 
 
 include '../connections/connectUser.php';
@@ -43,12 +41,13 @@ session_start();
 
 $inspected_user_name = $_GET['inspected_user_name']; 
 $inspected_user_id = $_GET['inspected_user_id'];
-echo "<div> Viewing user " . $inspected_user_name  . " with  user_id : " . $inspected_user_id . "  </div>";
 
+echo "<div class='quizInformation'>\n";
+echo "<p class='info'><strong>Currently Viewing: </strong>" . $inspected_user_name  . "</p>\n</div>";
+echo "<div class='quizInformation'>\n";
+echo "<p class='info'><strong>User ID: </strong>" . $inspected_user_id . "</p>\n</div>";
 
 $dbh = ConnectUser();
-
-
 $query_string = " call Asrcoo.get_user_privilege(:un); ";
 $sth = $dbh->prepare($query_string);
 $sth->bindParam(':un', $inspected_user_name, PDO::PARAM_STR);
@@ -67,47 +66,36 @@ $table_string = $result['privilege'];
 $stripped = trim($table_string);
 
 if($table_string == "2"){
-	echo "<div> Mentor Status:  <input type='checkbox' class='createUserCheckbox' id='createUserCheckbox' name='mentorCheckbox' value='Mentor' checked></input></div>";
+	echo "<div class='quizInformation'>\n";
+	echo "<p class='info'><strong>Mentor Status: </strong> <input type='checkbox' class='createUserCheckbox' id='createUserCheckbox' name='mentorCheckbox' value='Mentor' checked></input></p></div>";
 } else{
-	echo "<div> Mentor Status: <input type='checkbox' class='createUserCheckbox' id='createUserCheckbox' name='mentorCheckbox' value='Mentor'></input></div>";
+	echo "<div class='quizInformation'>\n";
+	echo "<p class='info'><strong>Mentor Status: </strong> <input type='checkbox' class='createUserCheckbox' id='createUserCheckbox' name='mentorCheckbox' value='Mentor'></input></p></div>";
 }
  
 ?>
-</tr>
-
+<br>
+<table style="width:100%; text-align:center;">
 <tr>
-<!-- View Metrics -->
 <td>
-<form action='../???' method="get" name="view_metrics">
-    <input id='submit_view_metrics' class='button' type="submit" style="width:100px" value="View Metrics"/>
- </form>
-</td>
-
-<!-- Change Password ??? why -->
-<td>
+<!-- Change password -->
 <form action='changePassword.php' method="get" name="change_password">
     <input type='hidden' name='inspected_user_id' value='<?php echo $inspected_user_id ?>'/>
     <input id='submit_change_password' class ='button' style="width:120px" type="submit"  value="Change Password"/>
 </form>
 </td>
-
-<!-- Delete User -->
 <td>
-    <input onclick="confirmDelete();" id='submit_delete_user' class='button' type = "button"  value="Delete User"/>
+<!-- Delete User -->
+    <input onclick="confirmDelete();" id='submit_delete_user' style="width:100px;" class='button' type = "button"  value="Delete User"/>
     <input type='hidden' id='inspected_user_id' name='inspected_user_id' value='<?php echo $inspected_user_id ?>'/>
     <input type='hidden' id='inspected_user_name' name='inspected_user_name' value='<?php echo $inspected_user_name ?>'/>
 </td>
-
-
-<!-- Change Privilege -->
 <td>
+<!-- Change Privilege -->
    <input type='hidden' name='inspected_user_id' value='<?php echo $inspected_user_id ?>'/>
    <input type='hidden' name='inspected_user_name' value='<?php echo $inspected_user_name ?>'/>
-   <input onclick="confirmChangePrivilege();" id='submit_change_password' class ='button' style="width:130px" type="submit"  value="Change Privilege"/>   
-</td>
-
-</tr>
-</table>
+   <input onclick="confirmChangePrivilege();" id='submit_change_password' class ='button' style="width:130px" type="submit"  value="Change Privilege"/>
+</td></tr></table> 
 	<script type="text/javascript">
 	//This function will ask the admin whether or not 
 	//they would like to continue deleting the user

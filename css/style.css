@@ -1,27 +1,34 @@
+@import url(https://fonts.googleapis.com/css?family=Walter+Turncoat);
+
 html, body {
   height:100%;
   margin: 0; 
-  padding: 0;
+  padding: 50px 0 0 0;
   background-image: url("/src/homepage_background_image.jpg");
   background-size:100% 100%;
   background-repeat:no-repeat;
   background-attachment: fixed;
 }
 
-html#login {
-  align-items: center;
-  display:flex;
-  flex-direction: column;
+html.loginPage,body.loginPage{
+  padding:0px;
+  background-image: url("/src/blurry_background.jpg");
+  background-size:cover;
+  background-repeat:no-repeat;
 }
 
 .navBar {
   background: #211483;
   color: white;
   text-align: center;
-  font-family: arial;
+  font-family: sans-serif;
   font-size:12px;
-  padding: 5px 5px 0px;
-  box-shadow: 0px 5px 5px #4134A4;
+  padding: 5px;
+  box-shadow: 0px 3px 10px #4134A4;
+  width:100%;
+  position:fixed;
+  top:0;
+  z-index:2;
 }
 
 .dropbtn {
@@ -84,8 +91,8 @@ background-color: #4134A4;
 }
 
 .dropbtn:hover {
-background-color:#4134A4
-;}
+background-color:#4134A4;
+}
 
 .container {
   background: rgba(255,255,255,0.5);
@@ -96,7 +103,7 @@ background-color:#4134A4
   box-shadow: 0px 5px 7px #4134A4;
   border: #7ad7f0 4px solid;
   margin-top: 30px;
-  font-family: arial;
+  font-family: sans-serif;
   }
 
 .container#userBox {
@@ -104,8 +111,11 @@ background-color:#4134A4
 }
 
 .container#loginBox {
-  width: 30%;
-  padding:10px;
+  width: 60%;
+  padding:50px 20px;
+  border:none;
+  color:black;
+  background-color: rgba(255,255,255,0.8);
 }
 
 .container#createUserBox {
@@ -122,7 +132,11 @@ background-color:#4134A4
   width: 80%;
   border: 0px solid;
 }
-
+.container#viewUserContainer {
+  width: 420px;
+  border: 0px solid;
+  padding-bottom:20px;
+}
 .container#addQuizInfoContainer {
   width:50%;
   border: 0px solid;
@@ -171,12 +185,12 @@ th {
   border-color: white;
   border-width: 1px;
   height: 50px;
-  font-family: arial;
+  font-family: sans-serif;
   padding: 0px 16px 0px 16px;
 }
 
 #tableHeading {
-  font-family: arial;
+  font-family: sans-serif;
   text-align:center;
   width:100%;
   }
@@ -191,11 +205,12 @@ input[type=text]#userNameInput{
   width: 95%;
   border-radius: 4px;
   padding: 4px;
+  margin: 10px 0px;
   }
 
 input.createUserForm{
   width: 80%;
-  padding: 12px;;
+  padding: 12px;
   margin: 10px auto 10px auto;
   display: block;
   border: 1px solid #ccc;
@@ -207,6 +222,7 @@ input[type=password]#passwordInput{
   width: 95%;
   border-radius: 4px;
   padding: 4px;
+  margin:10px 0px;
 }
 /*
 input#createUser {
@@ -222,19 +238,26 @@ tr:nth-child(even) {
 background-color: #f2f2f2;
 }
 
+tr.metricsRow:nth-child(even) {
+background-color: transparent;
+}
 label.possibleAnswer {
   display: block;
   margin-bottom: 10px;
 }
 
 .loginHeader {
-  background-color: #211483;
+  background-color: rgba(33,20,131,0.8);
   text-align: center;
-  font-family: arial;
-  width: 100%;
+  font-family: sans-serif;
   color:white;
-  padding: 5px;
+  padding: 5px 35px;
   box-shadow: 0px 5px 8px #4134A4;
+  width: 35%;
+  position:absolute;
+  right:0;
+  top:0;
+  bottom:0;
 }
 
 .button {
@@ -243,11 +266,10 @@ label.possibleAnswer {
   border-color: white;
   border: white;
   border-radius: 5px;
-  font-family: auto;
+  font-family: sans-serif;
   margin: 5px 0px 5px 0px;
   padding: 5px 0px 5px 0px;
   text-align: center;
-  font-family:arial;
   width: 75px;
 }
 
@@ -269,7 +291,7 @@ label.possibleAnswer {
   width: 125px;
   float:right;
   margin-right: 60px;
-  font-family:arial;
+  font-family:sans-serif;
 }
 
 #cancelButton {
@@ -281,7 +303,7 @@ label.possibleAnswer {
   width:125px;
   float:left;
   margin-left: 60px;
-  font-family:arial;
+  font-family:sans-serif;
 }
 
 #login {
@@ -304,6 +326,18 @@ label.possibleAnswer {
   border-radius: 4px 4px 0px 0px;
 }
 
+#viewUserHeader {
+  font-family: sans-serif;
+  font-weight: 300;
+  color: white;
+  margin: 0px;
+  padding: 10px;
+  font-size: 20px;
+  background-image: radial-gradient(#4134A4 5%, #211483 95%);
+  text-align: center;
+  box-shadow: 0px 2px 4px #4134A4;
+  border-radius: 4px 4px 0px 0px;
+}
 #quizResultHeader {
   font-family: sans-serif;
   font-weight: 300;
@@ -328,6 +362,11 @@ label.possibleAnswer {
   text-align: center;
 }
 
+#badGrade {
+  font-size: 72px;
+  color:#FF2828;
+  text-align: center;
+}
 .question {
   margin: 10px 0px 0px 20px;
 }
@@ -342,13 +381,13 @@ label.possibleAnswer {
   width:125px;
   float:left;
   margin-left: 60px;
-  font-family:arial;
+  font-family:sans-serif;
 }
 
 .createUserCheckbox {
   position: relative;
-  margin-left: 200px;
-  padding-left:20px;
+  margin-left: 10px;
+  padding-left:0px;
   }
 
 #createQuizButton {
@@ -366,4 +405,167 @@ label.possibleAnswer {
   width: 100px;
   }
 
+#footer{
+  background-color:#373737;
+  padding: 10px 0px 5px 10px;
+  border-top: 4px solid #212121;
+  position:fixed;
+  z-index:2;
+  bottom:0;
+  width:99.3%;
+}
 
+#footerTextLeft{
+  margin:0px;
+  color:gray;
+  font-size:11px;
+  display:inline;
+}
+
+#footerTextRight{
+  margin: 0px 0px 0px 0px;
+  color:gray;
+  width:30%;
+  font-size:11px;
+  display:inline;
+  float:right;
+}
+
+#generalInfoSection {
+  width:100%;
+  background-repeat:no-repeat;
+  background-position: right;
+  background-color:#F2F2F3;
+  height:280px;
+  padding-top:0px;
+}
+#generalInfo {
+  margin:0px;
+  position:relative;
+  float:left;
+  width:30%;
+  top:30%;
+  bottom:30%;
+  left:5%;
+  font-family:sans-serif;
+}
+#generalInfoImage {
+  margin:0px;
+  max-width:50%;
+  float:right;
+  height:280px;
+}
+
+#topQuizSection {
+  background-image:url("/src/chalkboard_background.png");
+  background-size:cover;
+  height:1000px;
+  width:50%;
+  padding-top:40px;
+  padding-bottom: 50px;
+  background-repeat:no-repeat;
+  background-color: #F7FAFF;
+  background-position:left bottom;
+  border-right: 8px ridge silver;
+  border-bottom: 10px ridge silver;
+  position:relative;
+  z-index:1;
+}
+
+.topQuizzes {
+  font-family: "Walter Turncoat", cursive;
+  color:white;
+  font-size: 24px;
+  width:100%;
+  text-align:center;
+}
+
+.topQuizData {
+  font-size:24px;
+  background-image:none;
+  text-align:center;
+  height:auto;
+  border: none;
+  font-family: "Walter Turncoat", cursive;
+  padding:0px;
+}
+
+#iconSection {
+  height:520px;
+  width: 100%;
+  background-color:black;
+  padding:25px 0px;
+}
+
+.iconContainer {
+  width:33%;
+  float:left;
+  text-align:center;
+  font-family: sans-serif;
+  position:relative;
+  top:20%;
+  color:white;
+}
+
+.iconContainer p {
+  width:50%;
+  position:relative;
+  left:25%;
+  right:25%;
+}
+
+#tableSideSection {
+  background-image: linear-gradient(#1E8449, #27AE60, #1E8449);
+  width: 50%;
+  height:1000px;
+  float:right;
+  padding-top:40px;
+  padding-bottom:50px;
+  border-bottom: 10px solid #1E8449;
+}
+#tableSideSection p {
+  margin:0px;
+  position:relative;
+  top:10%;
+  bottom:40%;
+  width:40%;
+  left:25%;
+  font-size:32px;
+  font-family:"Walter Turncoat";
+  color:white;
+}
+
+#inspirationalBackground {
+  background-image:url("/src/inspirational_background.jpg");
+  width: 100%;
+  height: 600px;
+  background-repeat:no-repeat;
+  background-size:cover;
+}
+
+#transparentBlueAndText {
+  background-color: rgba(37, 116, 169, 0.7);
+  color:white;
+  width:100%;
+  height:600px;
+}
+
+#quoteText {
+  position:relative;
+  font-size:32px;
+  font-style: italic;
+  text-align:center;
+  width:30%;
+  top:30%;
+  bottom:40%;
+  left:35%;
+  right:35%;
+  margin:0px;
+}
+
+#correctAnswerText {
+  font-size:18px;
+  margin-left:20px;
+  padding: 5px 0px;
+  font-family: sans-serif;
+  }

@@ -14,7 +14,7 @@ include '../../homepage/navBar.php';
       <h4 id='editQuestionHeader'>Create Question</h4>
 
       <p class='info'><strong>Question Text: </strong> <input type='text' name='question' id='editQuestionText'/> </p>
-      <p class='info'><strong>Point Value: </strong> <input type='number' min="0" step="1"/> </p>
+      <p class='info'><strong>Point Value: </strong> <input type='number' min="1" step="1"/> </p>
 	
       <!-- Answer format -->      
       <div id="editQuestion">

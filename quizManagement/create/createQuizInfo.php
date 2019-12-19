@@ -16,7 +16,7 @@ include '../../homepage/navBar.php';
     <p class='info'><strong>Quiz Name: </strong> <input type='text' name='quiz_name' id='quiz_name'>   </input>  </p>
     <p class='info'><strong>Description: </strong><br>
     <textarea name='quiz_description' id='quiz_description' rows="10" cols="50" class = 'descriptionTextBox'></textarea></p>
-    <p class='info'><strong>Time limit: </strong> <input type='text' name='quiz_time_limit' id='quiz_time_limit'>  </input>  </p>
+    <p class='info'><strong>Time limit in minutes: </strong> <input type='text' name='quiz_time_limit' id='quiz_time_limit'>  </input>  </p>
 
 	
    

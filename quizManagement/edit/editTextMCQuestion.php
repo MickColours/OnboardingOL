@@ -91,8 +91,8 @@ and decide what is to be removed,kept and updated
 			$answer_string .= ">";
 		}
 		//input validity
-		$answer_string .= "<input onclick=setDelete('" .  $answer_ndx . "') type='button' name='delete'"; //call js with answerndx
-		$answer_string .= "value='delete' id='deleteBtn". $answer_ndx ."'> ";
+		$answer_string .= "<input onclick=setDelete('" .  $answer_ndx . "') type='button' name='Delete'"; //call js with answerndx
+		$answer_string .= "value='Delete' id='deleteBtn". $answer_ndx ."'> ";
 		//input flag delete *indexed id necessary for js deletes
 		$answer_string .= "<input type='hidden' name='deleteFlag". $answer_ndx . "' value='false' id='deleteFlag" . $answer_ndx . "'>";
 		$answer_string .= "</li>";
@@ -114,7 +114,7 @@ and decide what is to be removed,kept and updated
 	?>
 	<input id='createQuestion' class='button' type='submit' value='Submit'/>
       </form>
-	<input id="createQuestion" class="button" type='button' value='Add Question' onclick=addAnswer()>
+	<input id="createQuestion" class="button" type='button' value='Add Answer' onclick=addAnswer()>
     </div>
 
 
@@ -148,7 +148,7 @@ and decide what is to be removed,kept and updated
 		var entry = document.createElement('li');
 		entry.setAttribute('id','row'.concat(answerndx));
 		var i0 = document.createElement("Label"); //input element, text Answer
-		i0.innerHTML ="answer ";
+		i0.innerHTML ="Answer: ";
 	
 
 		var i1 = document.createElement("input"); //input element, text Answer
@@ -167,7 +167,7 @@ and decide what is to be removed,kept and updated
 		var functionCall = "javascript: setDelete(".concat(answerndx);
 		functionCall = functionCall.concat(");");
 		i5.setAttribute("onclick",functionCall);
-		i5.innerHTML="delete";
+		i5.innerHTML="Delete";
 
 		var i6 = document.createElement("input"); //create the delete flag for the new element
 		var flagid = 'deleteFlag'.concat(answerndx);

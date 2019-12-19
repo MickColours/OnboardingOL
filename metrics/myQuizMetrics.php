@@ -1,7 +1,3 @@
-<!-- allows data transfer through session
-	Authors: Victor , ? , Matt
-
- -->
 <?php 
 #includes the HTML code for the navigation bar
 include "../homepage/navBar.php";
@@ -14,7 +10,7 @@ Allowed();
 
 <html>
   <head>
-    <title>Edit a Quiz | AFMS Online Onboarding Learning Resource</title>
+    <title>My Quiz Metrics | AFMS Online Onboarding Learning Resource</title>
     <!-- Links the CSS code -->
     <link rel="stylesheet" type="text/css" href="/css/style.css">
   </head>
@@ -22,7 +18,7 @@ Allowed();
   <body>
     <!-- creates a container that will display the contents of the page -->
     <div class="container">
-      <h1 id="tableHeading">Manage a Quiz</h1>
+      <h1 id="tableHeading">My Quiz Metrics</h1>
       <!-- creates a table that will display a list of quizzes to be edited
            each entry will contain a button which redirects to quiz editing -->
       <table class="displayTable" id="quizTable">
@@ -44,12 +40,7 @@ Allowed();
 
         $dbh = connectEmployee();
 
-	//check the user privileges 
-	if ($_SESSION['user_privilege']==2){ //mentors get to see all quizzes
-		$query_string = " call Asrcoo.list_all_quizzes();"; 
-	}else { //employees get to see only there quizzes	
-		$query_string = " call Asrcoo.list_user_quizzes(" . $_SESSION['user_id'] . ") ";
-	}
+	$query_string = " call Asrcoo.list_user_quizzes(" . $_SESSION['user_id'] . ") ";
         $sth = $dbh->prepare($query_string);
         $sth->execute();
 
@@ -63,26 +54,12 @@ Allowed();
 
 		$table_string .= " <td>";
 		//edit quiz form
-                $table_string .= " <form class='manageButton' action='http://54.198.147.202/quizManagement/edit/loadEditQuiz.php' method='get' name='view_quiz'> ";
-		$table_string .= " <input id='editQuizButton' class='button' type='submit' value='Edit Quiz'/> ";
+                $table_string .= " <form class='manageButton' action='http://54.198.147.202/metrics/quizMetrics.php' method='get' name='view_quiz'> ";
+		$table_string .= " <input id='editQuizButton' class='button' style='width:100px;' type='submit' value='View Metrics'/> ";
 		$table_string .= " <input type='hidden' id='inspected_quiz_name' name='inspected_quiz_name' value='" . $row['name'] . "'/>";
                 $table_string .= " <input type='hidden' id='inspected_quiz_id' name='inspected_quiz_id' value='" . $row['quiz_id']  .   "'/>";
 		$table_string .= " </form>";
-		//toggle quiz visibility, add logic, to change button value .. 
-		$table_string .= " <form class='manageButton' action='http://54.198.147.202/quizManagement/toggleQuizVisibility.php' method='get' name='view_quiz'> ";
-		$table_string .= " <input id='visibilityButton' class='button' type='submit' style='width:100px' value='Toggle Visibility'/> ";
-		$table_string .= " <input type='hidden' id='inspected_quiz_id' name='inspected_quiz_id' value='" . $row['quiz_id']  .   "'/>";
-		$table_string .= " </form>";
-
-		//remove quiz
-		$table_string .= " <form class='manageButton' action='http://54.198.147.202/quizManagement/deleteQuiz.php' method='get' name='view_quiz'> ";
-		$table_string .= " <input id='deleteButton' class='button' type='submit' value='Delete'/> ";
-		$table_string .= " <input type='hidden' id='inspected_quiz_id' name='inspected_quiz_id' value='" . $row['quiz_id']  .   "'/>";
-		$table_string .= " </form>";
-
 		$table_string .= " </td>" ;
-
-
                 $table_string .= "</tr>\n";
 
         }

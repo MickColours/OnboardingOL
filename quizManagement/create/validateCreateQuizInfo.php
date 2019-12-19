@@ -13,7 +13,6 @@
 	#set procedure paramaters
 	$author_id = $_SESSION['user_id']; 
 	$time_limit = $_GET['quiz_time_limit']; //add logic to ensure timelimit is valid
-	$time_limit = 0; //overwrite now for debugging purposes
 	$quiz_name = $_GET['quiz_name'];
 	$quiz_description = $_GET['quiz_description'];
 
@@ -43,6 +42,7 @@
 	echo "<div> A quiz was generated with quiz id:  " . $quiz_id . "</div>";
 	//store newly created quiz id in the session
 	$_SESSION['edit_quiz_id'] = $quiz_id;
+	$_SESSION['edit_quiz_name'] = $quiz_name;
 	//go to edit quiz overview
 	header("Location: http://54.198.147.202/quizManagement/edit/editQuizOverview.php");
 

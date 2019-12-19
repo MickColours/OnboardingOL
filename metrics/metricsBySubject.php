@@ -1,36 +1,20 @@
 <?php
-#includes the HTML code for the navigation bar
-include "../../homepage/navBar.php";
+include '../homepage/navBar.php';
 session_start();
-
-#redirects guests who are not logged in
-include '../../accessControl/loggedIn.php';
-Allowed();
 ?>
-
 <html>
   <head>
-    <title>Edit a Quiz | AFMS Online Onboarding Learning Resource</title>
-    <!-- Links the CSS code -->
+    <title>Metrics By Subjects</title>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
   </head>
-
   <body>
     <!-- creates a container that will display the contents of the page -->
     <div class="container" id="uploadFileBox">
       <h1 id="quizInfoHeader">Manage Subjects</h1><br>
-      <!-- creates a table that will display a list of quizzes to be edited
-           each entry will contain a button which redirects to quiz editing -->
-
-    <form action = 'http://54.198.147.202/quizManagement/subjects/createSubject.php'>
-      <input id='createQuizButton' class='button' style="width:90%; text-align:center; margin:0px; padding:10px 0px;position:relative;left:5%;" type='submit' value='Create'/>
-    </form>
-    <br>
-
     <table class="displayTable" id="subjectTable">
 	<tbody>
         <tr id="headerRow">
-          <th style="width:40%">Subject</th>
+          <th style="width:50%">Subject</th>
           <!-- <th>Author</th> As of now , the data relies on a query that assumes the user is the author
                 ergo, author is not needed , may change in the future Matt -->
           <th>
@@ -42,7 +26,7 @@ Allowed();
 
                 <?php
 
-                include '../../connections/connectAdmin.php';
+                include '../connections/connectAdmin.php';
                 session_start();
 
                 $dbh = connectAdmin();
@@ -59,8 +43,8 @@ Allowed();
 
                         //delete subject
                         $tablestring .= " <td>";
-                        $tablestring .= " <form class='manageButton' action='http://54.198.147.202/quizManagement/subjects/deleteSubject.php' method='get' name='view_subject'> ";
-                        $tablestring .= " <input id='deleteButton' class='button' type='submit' value='Delete'/> ";
+                        $tablestring .= " <form class='manageButton' action='http://54.198.147.202/metrics/subjectMetrics.php' method='get' name='view_subject_metrics'> ";
+                        $tablestring .= " <input id='metricsButton' class='button' style='width:140px;' type='submit' value='View Subject Metrics'/> ";
                         $tablestring .= " <input type='hidden' id='inspected_subject_id' name='inspected_subject_id' value='" . $row['subject_id']  .   "'/>";
 			$tablestring .= " <input type='hidden' id='inspected_subject_name' name='inspected_subject_name' value='" . $row['name']  .   "'/>";
 			$tablestring .= " </form>";
@@ -101,6 +85,6 @@ Allowed();
      }
     }
     </script>
+
   </body>
 </html>
-
