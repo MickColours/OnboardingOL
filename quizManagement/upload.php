@@ -112,7 +112,7 @@ if ($upload_success == 1) {
 	$_SESSION['edit_quiz_id'] = $quiz_id;
 	$_SESSION['edit_quiz_name'] = $quiz_name;
 	#go to edit quiz overview
-	header("Location: http://54.198.147.202/quizManagement/edit/editQuizOverview.php");
+	header("Location: /quizManagement/edit/editQuizOverview.php");
 ?>
 
 <link rel="stylesheet" type="text/css" href="/css/style.css">

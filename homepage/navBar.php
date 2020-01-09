@@ -70,7 +70,7 @@
  $name_string .= "<div class='dropdown-content' id='options'>\n";
  $name_string .= "<a href='/userInfo/myGrades.php'>My Grades</a>\n";
  $name_string .= "<a href='/metrics/myQuizMetrics.php'>My Quiz Metrics</a>\n";
- $name_string .= "<form action='http://54.198.147.202/accessControl/logout.php' method='get' name='logout'>\n";
+ $name_string .= "<form action='http://18.234.251.167/accessControl/logout.php' method='get' name='logout'>\n";
  $name_string .= "<input id='submit' class='dropdown-content' type='submit' value='Logout'/>\n";
  $name_string .= "</form>";
  $name_string .= "</div>\n";

@@ -21,6 +21,6 @@
         $stmt->execute();
 
         //go to edit quiz overview
-        header("Location: http://54.198.147.202/quizManagement/manageQuiz.php");
+        header("Location: /quizManagement/manageQuiz.php");
 
 ?>

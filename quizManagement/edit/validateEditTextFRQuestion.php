@@ -42,6 +42,6 @@ $stmt->bindParam(':ans', $answerText, PDO::PARAM_STR);
 $stmt->bindParam(':val', $validity, PDO::PARAM_INT);
 $stmt->execute();
 
-header("Location: http://54.198.147.202/quizManagement/edit/editQuizOverview.php");
+header("Location: /quizManagement/edit/editQuizOverview.php");
 
 ?>

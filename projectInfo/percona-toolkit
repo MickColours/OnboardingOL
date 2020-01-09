@@ -1,0 +1,29 @@
+Dumping the user and there grants is not trivial through mysqldump, so I had to find
+an alternativate method to transport all user grants generated for the development of this project
+
+there is a mysql query 'show 'user'@'host' grants; that returns all grants, but it is not in an easy to
+transport format, so we will utilize a tool from the percona toolkit -> pt-show-grants
+
+the installtion procedure is as follows
+
+1.download the repository
+
+sudo apt install wget
+wget https://repo.percona.com/apt/percona-release_0.1-6.$(lsb_release -sc)_all.deb
+
+2.install the repository
+
+sudo dpkg -i percona-release_0.1-6.$(lsb_release -sc)_all.deb
+
+3.update apt cache and install the percona toolkit
+
+sudo apt update
+sudo apt-get install percona-toolkit
+
+to print out all grants of a user enter
+$pt-show-grants --only theUser --host localhost --user root --ask-pass
+
+
+
+
+

@@ -43,7 +43,7 @@ session_start();
 
                         //delete subject
                         $tablestring .= " <td>";
-                        $tablestring .= " <form class='manageButton' action='http://54.198.147.202/metrics/subjectMetrics.php' method='get' name='view_subject_metrics'> ";
+                        $tablestring .= " <form class='manageButton' action='http://18.234.251.167/metrics/subjectMetrics.php' method='get' name='view_subject_metrics'> ";
                         $tablestring .= " <input id='metricsButton' class='button' style='width:140px;' type='submit' value='View Subject Metrics'/> ";
                         $tablestring .= " <input type='hidden' id='inspected_subject_id' name='inspected_subject_id' value='" . $row['subject_id']  .   "'/>";
 			$tablestring .= " <input type='hidden' id='inspected_subject_name' name='inspected_subject_name' value='" . $row['name']  .   "'/>";

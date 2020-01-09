@@ -123,7 +123,7 @@ session_start();
 	  <td class="none"></td>
 	  <td class="none"><!-- column for add -->
 	<!-- need to wrap this information in a form Matt -->
-        <form id="selectQtype" name="selectQtype" action="http://54.198.147.202/quizManagement/create/createTextMCQuestion.php" method="get">
+        <form id="selectQtype" name="selectQtype" action="/quizManagement/create/createTextMCQuestion.php" method="get">
             <select name="question_type" id="question_type" onChange="chgAction()">
               <option value="textMC">Multiple Choice (text)</option>
               <option value="textSATA">Select All (text)</option>
@@ -132,10 +132,10 @@ session_start();
             </select>
 	</form>
 
-        <form action='http://54.198.147.202/quizManagement/edit/editQuizInfo.php'>
+        <form action='/quizManagement/edit/editQuizInfo.php'>
 	    <input type="submit" value="Edit Quiz Information"></button>
 	</form>
-	 <form action='http://54.198.147.202/quizManagement/edit/editQuizSubjects.php'>
+	 <form action='/quizManagement/edit/editQuizSubjects.php'>
             <input type="submit" value="Edit Quiz Subjects"></button>
         </form>
           </td>
@@ -163,12 +163,12 @@ function chgAction(){
 
   switch (form.question_type.selectedIndex) {
     case 0:
-       form.setAttribute('action',"http://54.198.147.202/quizManagement/create/createTextSATAQuestion.php");
+       form.setAttribute('action',"/quizManagement/create/createTextSATAQuestion.php");
     case 1:
-      form.setAttribute('action',"http://54.198.147.202/quizManagement/create/createTextSATAQuestion.php");
+      form.setAttribute('action',"/quizManagement/create/createTextSATAQuestion.php");
       break;
     case 2:
-      form.setAttribute('action',"http://54.198.147.202/quizManagement/create/createTextFRQuestion.php");
+      form.setAttribute('action',"/quizManagement/create/createTextFRQuestion.php");
       break;
   }
 }

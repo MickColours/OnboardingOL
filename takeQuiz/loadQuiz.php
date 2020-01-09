@@ -44,7 +44,7 @@ $_SESSION['quiz_start_time']=microtime(true);
 
 
 
-header("Location: http://54.198.147.202/takeQuiz/answerQuestions.php");
+header("Location: /takeQuiz/answerQuestions.php");
 
 
 

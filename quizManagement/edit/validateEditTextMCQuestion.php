@@ -59,6 +59,6 @@ for ($i=0; $i < $answer_elements; $i++){
 	}
 }
 
-header("Location: http://54.198.147.202/quizManagement/edit/editQuizOverview.php");
+header("Location: /quizManagement/edit/editQuizOverview.php");
 
 ?>

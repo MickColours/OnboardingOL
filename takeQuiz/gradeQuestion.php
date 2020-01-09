@@ -86,7 +86,7 @@ $duration =  microtime(true) - $stime;
 $duration = $duration / 60;
 if ($duration > $_SESSION['take_time_limit']){
 	//return to take quiz page
-	header("Location: http://54.198.147.202/takeQuiz/takeQuiz.php");
+	header("Location: /takeQuiz/takeQuiz.php");
 }
 
 #######################################
@@ -129,7 +129,7 @@ if($points_awarded != 0){
  }
 
 $form_string .= "</form>";
-$content = "<table> <div class='container' id='quizInfoContainer'> <h1 id='quizInfoHeader'>Answer</h1> " . $result_string . " " . $correct_answer_string . " " . $form_string . " </div> </table>";
+$content = "<table> <div class='container' id='displayAnswer'> <h1 id='quizInfoHeader'>Answer</h1> " . $result_string . " " . $correct_answer_string . " " . $form_string . " </div> </table>";
 echo $content; //display redirection link
 
 
@@ -139,11 +139,11 @@ echo $content; //display redirection link
 ####################################################
 
 if($_SESSION['take_question_counter'] != $_SESSION['take_number_of_questions']){
-header("Location: http://54.198.147.202/takeQuiz/answerQuestions.php");
+header("Location: http://18.234.251.167/takeQuiz/answerQuestions.php");
 #will be changed later to redirect to a post quiz page
 #where score is presented
 }else{
-	header("Location: http://54.198.147.202/takeQuiz/postQuiz.php");
+	header("Location: http://18.234.251.167/takeQuiz/postQuiz.php");
 }
 
 */

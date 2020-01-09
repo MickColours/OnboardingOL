@@ -1,5 +1,17 @@
+/* CSS File for the ASRC Federal Online Onboarding Learning Resource
+ * Team Parrots
+ * Author: Victor Caceres
+ *
+ * Updated to include comments about what the CSS
+ * does on the website as of 1/8/2019
+ */
+
+
+/* Imports the font used on the homepage's metrics section */
 @import url(https://fonts.googleapis.com/css?family=Walter+Turncoat);
 
+/* Basic style used for all pages
+ * Sets the size and background for the page */
 html, body {
   height:100%;
   margin: 0; 
@@ -10,6 +22,8 @@ html, body {
   background-attachment: fixed;
 }
 
+/* Sets the size and background for the page
+ * for the login page specifically */
 html.loginPage,body.loginPage{
   padding:0px;
   background-image: url("/src/blurry_background.jpg");
@@ -17,6 +31,8 @@ html.loginPage,body.loginPage{
   background-repeat:no-repeat;
 }
 
+/* Styles the navigation bar section.
+ * Sets the position, fonts, and background */
 .navBar {
   background: #211483;
   color: white;
@@ -31,6 +47,7 @@ html.loginPage,body.loginPage{
   z-index:2;
 }
 
+/* Styles the buttons used in the navigation bar */
 .dropbtn {
   background-color: #211483;
   color: white;
@@ -39,11 +56,15 @@ html.loginPage,body.loginPage{
   border: none;
 }
 
+/* Creates a dropdown menu to show with the dropdown buttons
+ * on the navigation bar */
 .dropdown {
   position: relative;
   display: inline-block;
 }
 
+/* Styles the content in the dropdown menus on the 
+ * navigation bar */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -60,10 +81,14 @@ html.loginPage,body.loginPage{
   display: block;
 }
 
+/* Changes background color when a dropdown option
+ * that is a link is hovered over. */
 .dropdown-content a:hover {
 background-color: #ddd;
 }
 
+/* Styles the dropdown option that is a form
+ * Mainly used for the Logout button on user options */
 .dropdown-content input[type=submit] {
   color: black;
   padding: 12px 16px;
@@ -73,27 +98,40 @@ background-color: #ddd;
   border:none;
 }
 
+/* Changes the background of the Logout option on user options */
 .dropdown-content input[type=submit]:hover {
 background-color: #ddd;
 }
 
+/* Shows the dropdown menu when a button on the navigation
+ * bar is hovered over */
 .dropdown:hover .dropdown-content {
 display: block;
 }
 
+/* Specifically for the user options, shows the dropdown menu
+ * on the right side. */
 .dropdown:hover .dropdown-content#options {
 display: block;
 right:0px;
 }
 
+/* Changes the color of the button on the navigation bar when
+ * it is hovered over. */
 .dropdown:hover .dropbtn {
 background-color: #4134A4;
 }
 
+/* Changes the color of the button on the navigation bar when
+ * it is hovered over. */
 .dropbtn:hover {
 background-color:#4134A4;
 }
 
+/* Division that contains the content to be displayed on a
+ * majority of the pages, excluding the homepage. 
+ * Contains tables, quizzes, quiz information, metrics, etc
+ * It is the white transparent box on these pages. */
 .container {
   background: rgba(255,255,255,0.5);
   width: 90%;
@@ -106,6 +144,13 @@ background-color:#4134A4;
   font-family: sans-serif;
   }
 
+/* == DIFFERENT CONTAINERS ==
+ * These use the main CSS attributes of the container
+ * for all containers. The IDs are used to make subtle
+ * changes to this container box. The IDs used are 
+ * self explanatory, in terms of what it affects and ]
+ * which pages they are used on.
+ */
 .container#userBox {
   width: 40%;
 }
@@ -132,6 +177,17 @@ background-color:#4134A4;
   width: 80%;
   border: 0px solid;
 }
+
+.container#displayQuestion{
+  width: 80%;
+  border: 0px solid;
+}
+
+.container#displayAnswer{
+  width: 80%;
+  border: 0px solid;
+}
+
 .container#viewUserContainer {
   width: 420px;
   border: 0px solid;
@@ -156,11 +212,14 @@ background-color:#4134A4;
   border-radius: 4px;
 }
 
+/* Styles the tables to span the width of the container
+ * and collapse the borders. */
 .displayTable{
   width: 100%;
   border-collapse: collapse;
 }
 
+/* Styles the division that shows the quiz information */
 .quizInformation {
   border-bottom-style: solid;
   border-width: 0px 0px 1px 0px;
@@ -168,14 +227,17 @@ background-color:#4134A4;
   padding: 0px;
 }
 
+/* Styles paragraphs used in website */
 p.info {
   margin: 12px 20px 12px 20px;
 }
 
+/* Styles all table data */
 td {
   padding-left: 7px;
   }
 
+/* Styles all table headers */
 th {
   font-size: 14px;
   background-image: radial-gradient(#4134A4 5%,#211483 95%);
@@ -189,18 +251,21 @@ th {
   padding: 0px 16px 0px 16px;
 }
 
+/* Styles a specific table header */
 #tableHeading {
   font-family: sans-serif;
   text-align:center;
   width:100%;
   }
 
+/* Styles the search bar */
 input[type=text]#searchBox{
   width: 95%;
   border-radius: 4px;
   padding: 4px;
   }
 
+/* Styles the username input */
 input[type=text]#userNameInput{
   width: 95%;
   border-radius: 4px;
@@ -208,6 +273,7 @@ input[type=text]#userNameInput{
   margin: 10px 0px;
   }
 
+/* Styles the inputs on the create user page */
 input.createUserForm{
   width: 80%;
   padding: 12px;
@@ -218,34 +284,37 @@ input.createUserForm{
   box-sizing: border-box;
 }
 
+/* Styles the password input */
 input[type=password]#passwordInput{
   width: 95%;
   border-radius: 4px;
   padding: 4px;
   margin:10px 0px;
 }
-/*
-input#createUser {
-  width:75%;
-  margin: 5px 30px 5px 45px;
-}
-*/
+
+/* Styles MC options on the quiz */
 input#mcOption {
   margin: 0px 10px 0px 40px;
 }
 
+/* Makes the even rows on tables a different color */
 tr:nth-child(even) {
 background-color: #f2f2f2;
 }
 
+/* This is used on the homepage. Makes sure the even rows
+ * do not have a background */
 tr.metricsRow:nth-child(even) {
 background-color: transparent;
 }
+
+/* Style for answer options */
 label.possibleAnswer {
   display: block;
   margin-bottom: 10px;
 }
 
+/* Styles the header used on the login page */
 .loginHeader {
   background-color: rgba(33,20,131,0.8);
   text-align: center;
@@ -260,6 +329,9 @@ label.possibleAnswer {
   bottom:0;
 }
 
+/* Styles the general use of all buttons on the website */
+/* Note that several buttons with different uses may be styled differently
+ * depending on their IDs */
 .button {
   color: white;
   background-color: darkblue;
@@ -278,10 +350,12 @@ label.possibleAnswer {
   margin-left: 7px;
 }
 
+/* Indents the buttons used on question pages */
 .button#questionSubmit {
   margin: 10px 20px 0px 40px;
 }
 
+/* Styles the buttons used to submit forms or files on the webiste */
 #submitButton {
   background: #2ecc71;
   border: #27ae60 1px solid;  
@@ -294,6 +368,7 @@ label.possibleAnswer {
   font-family:sans-serif;
 }
 
+/* Styles the buttons used to cancel forms or selected options */
 #cancelButton {
   background: #ff6961;
   border: #ff4036 1px solid;
@@ -306,13 +381,16 @@ label.possibleAnswer {
   font-family:sans-serif;
 }
 
+/* I dont think this is used
 #login {
   display: grid;
   grid-gap:0px;
   grid-template-columns: auto auto;
   grid-template-rows: auto auto;
 }
+*/
 
+/* Styles the header of the container used for quiz related information */
 #quizInfoHeader {
   font-family: sans-serif;
   font-weight: 300;
@@ -326,6 +404,7 @@ label.possibleAnswer {
   border-radius: 4px 4px 0px 0px;
 }
 
+/* Styles the header of the container used for the view user page */
 #viewUserHeader {
   font-family: sans-serif;
   font-weight: 300;
@@ -338,6 +417,8 @@ label.possibleAnswer {
   box-shadow: 0px 2px 4px #4134A4;
   border-radius: 4px 4px 0px 0px;
 }
+
+/* Styles the header of the container used for the quiz results page */
 #quizResultHeader {
   font-family: sans-serif;
   font-weight: 300;
@@ -351,26 +432,32 @@ label.possibleAnswer {
   border-radius: 4px 4px 0px 0px;
 }
 
+/* Styles the text used in the grade text */
 #gradeHeader {
   text-align: center;
   margin-top: 25px;
 }
 
+/* Styles the grade text used in the results page */
 #grade {
   font-size: 72px;
   color:#0EA803;
   text-align: center;
 }
 
+/* Styles the grade text used in the results page */
 #badGrade {
   font-size: 72px;
   color:#FF2828;
   text-align: center;
 }
+
+/* Indents the text used for the questions */
 .question {
   margin: 10px 0px 0px 20px;
 }
 
+/* Styles the buttons used for saving changes */
 #saveButton {
   background: #4134A4;
   border: #4134A4 1px solid;
@@ -384,12 +471,14 @@ label.possibleAnswer {
   font-family:sans-serif;
 }
 
+/* Styles the checkbox used in the create user page */
 .createUserCheckbox {
   position: relative;
   margin-left: 10px;
   padding-left:0px;
   }
 
+/* Styles the button on the create quiz page */
 #createQuizButton {
   margin-left: 20px;
   padding: 5px 75px 5px 5px;
@@ -400,11 +489,14 @@ label.possibleAnswer {
   margin: 0 auto;
 }
 
+/* Styles the button for creating a question on the edit quiz page */
 #createQuestion {
   margin-left: 20px;
   width: 100px;
   }
 
+/* Styles the footer division used on the homepage
+ * Also includes the side sections within that division */
 #footer{
   background-color:#373737;
   padding: 10px 0px 5px 10px;
@@ -431,6 +523,7 @@ label.possibleAnswer {
   float:right;
 }
 
+/* Styles the division for the general info section on the homepage */
 #generalInfoSection {
   width:100%;
   background-repeat:no-repeat;
@@ -439,6 +532,8 @@ label.possibleAnswer {
   height:280px;
   padding-top:0px;
 }
+
+/* Styles the text used in the general info section on the homepage */
 #generalInfo {
   margin:0px;
   position:relative;
@@ -449,6 +544,8 @@ label.possibleAnswer {
   left:5%;
   font-family:sans-serif;
 }
+
+/* Positions the image used in the general info section */
 #generalInfoImage {
   margin:0px;
   max-width:50%;
@@ -456,7 +553,8 @@ label.possibleAnswer {
   height:280px;
 }
 
-#topQuizSection {
+/* Styles the metrics section on the homepage */
+.metricsSection {
   background-image:url("/src/chalkboard_background.png");
   background-size:cover;
   height:1000px;
@@ -472,7 +570,8 @@ label.possibleAnswer {
   z-index:1;
 }
 
-.topQuizzes {
+/* Styles the table used in the metrics section on the homepage */
+.metricsTable {
   font-family: "Walter Turncoat", cursive;
   color:white;
   font-size: 24px;
@@ -480,7 +579,8 @@ label.possibleAnswer {
   text-align:center;
 }
 
-.topQuizData {
+
+.metricsData {
   font-size:24px;
   background-image:none;
   text-align:center;
@@ -490,6 +590,7 @@ label.possibleAnswer {
   padding:0px;
 }
 
+/* Positions the images on the icon section on the homepage */
 #iconSection {
   height:520px;
   width: 100%;
@@ -497,6 +598,7 @@ label.possibleAnswer {
   padding:25px 0px;
 }
 
+/* Styles the icon section on the homepage, also including text */
 .iconContainer {
   width:33%;
   float:left;
@@ -514,6 +616,8 @@ label.possibleAnswer {
   right:25%;
 }
 
+/* Styles the section on the side of the metrics section on the homepage
+ * this also includes the text used in paragraph pags in that section */
 #tableSideSection {
   background-image: linear-gradient(#1E8449, #27AE60, #1E8449);
   width: 50%;
@@ -535,6 +639,7 @@ label.possibleAnswer {
   color:white;
 }
 
+/* Styles the inspirational quote section on the homepage */
 #inspirationalBackground {
   background-image:url("/src/inspirational_background.jpg");
   width: 100%;
@@ -543,13 +648,14 @@ label.possibleAnswer {
   background-size:cover;
 }
 
+/* Adds a transparent blue vision on top of the inspirational quote section
+ * Also styles the text to be show over that section */
 #transparentBlueAndText {
   background-color: rgba(37, 116, 169, 0.7);
   color:white;
   width:100%;
   height:600px;
 }
-
 #quoteText {
   position:relative;
   font-size:32px;
@@ -563,6 +669,7 @@ label.possibleAnswer {
   margin:0px;
 }
 
+/* Styles the text that is displayed when a question is answered correctly */
 #correctAnswerText {
   font-size:18px;
   margin-left:20px;

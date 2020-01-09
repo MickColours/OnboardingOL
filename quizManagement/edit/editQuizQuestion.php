@@ -24,7 +24,7 @@ include '../../homepage/navBar.php';
       ?>
       </div>
 
-      <form action = 'http://54.198.147.202/editQuizOverview.php'>
+      <form action = '/editQuizOverview.php'>
 	<input id='submit' class='button' type='submit' value='Submit'/>
       </form>
     </div>

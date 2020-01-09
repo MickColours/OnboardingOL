@@ -38,7 +38,7 @@ $quiz_name = $_SESSION['take_name'];
   </head>
 
   <body>
-    <div class="container" id="quizInfoContainer">
+    <div class="container" id="displayQuestion">
 	<!-- inject quiz name -->
     <h1 id="quizInfoHeader"><?php echo $_SESSION['take_name']?></h1>
       <br>

@@ -8,6 +8,6 @@ session_start();
 //destroy session
 session_destroy();
 //redirect to login page
-header("Location: http://54.198.147.202/login.php");
+header("Location: /login.php");
 
 ?>

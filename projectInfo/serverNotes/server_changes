@@ -1,0 +1,25 @@
+Installed Mysql-server
+>sudo apt install mysql-server
+
+Updated Packages
+>sudo apt update
+
+Installed Tree
+>sudo apt install tree
+
+Installed ApacheV2 (http server)
+>sudo apt-get install apache2
+
+Changed Root password for Mysql server
+> See mysql notes
+
+
+Installed php 7.2
+> sudo apt install php-7.2
+
+Installed php-mysql extension
+to allow php to communicate with mysql
+
+
+
+

@@ -50,7 +50,7 @@ Allowed();
 
                         //delete subject
                         $tablestring .= " <td>";
-                        $tablestring .= " <form class='manageButton' action='http://54.198.147.202/quizManagement/edit/deleteSubjectFromQuiz.php' method='get' name='view_subject'> ";
+                        $tablestring .= " <form class='manageButton' action='http://18.234.251.167/quizManagement/edit/deleteSubjectFromQuiz.php' method='get' name='view_subject'> ";
                         $tablestring .= " <input id='deleteButton' class='button' type='submit' value='Delete'/> ";
                         $tablestring .= " <input type='hidden' id='inspected_subject_id' name='inspected_subject_id' value='" . $row['subject_id']  .   "'/>";
                         $tablestring .= " <input type='hidden' id='inspected_quiz_id' name='inspected_quiz_id' value='" . $quiz_id  .   "'/>";
@@ -116,7 +116,7 @@ Allowed();
 
                         //delete subject
                         $tablestring .= " <td>";
-                        $tablestring .= " <form class='manageButton' action='http://54.198.147.202/quizManagement/edit/addSubjectToQuiz.php' method='get' name='view_subject'> ";
+                        $tablestring .= " <form class='manageButton' action='http://18.234.251.167/quizManagement/edit/addSubjectToQuiz.php' method='get' name='view_subject'> ";
                         $tablestring .= " <input id='deleteButton' class='button' type='submit' value='Add'/> ";
                         $tablestring .= " <input type='hidden' id='inspected_subject_id' name='inspected_subject_id' value='" . $row['subject_id']  .   "'/>";
                         $tablestring .= " <input type='hidden' id='inspected_quiz_id' name='inspected_quiz_id' value='" . $quiz_id  .   "'/>";

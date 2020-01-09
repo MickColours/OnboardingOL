@@ -1,0 +1,50 @@
+Data Dictionary for ASRC Onboarding Online Resource
+
+
+login.php	   			 Form or Session			Connections
+
+user_name				 Form					validateLogin.php
+user_password				 Form					validateLogin.php
+login_error_msg				 Session				validateLogin.php
+
+
+validate/validateLogin.php
+
+logged_in				 Session				All pages
+welcome_msg				 Session				homepage.php
+user_privilege				 Session				homepage.php/viewUser.php/manageUser.php/createUser.php
+login_error_msg				 Session				
+user_name				 Form	
+user_password				 Form
+
+homepage/homepage.php
+
+welcome_msg				 Session
+user_privelege				 Session
+
+userManagement/manageUser.php
+
+inspected_user_name			 Form
+inspected_user_id			 Form
+
+userManagement/deleteUser.php
+
+inspected_user_name			 Form
+inspected_user_id			 Form
+
+userManagement/createUser.php
+
+add_user_error_msg			 Session
+create_user_success_msg			 Session
+user_name				 Form
+re_user_name				 Form	
+user_password				 Form
+re_user_password			 Form
+
+userManagement/addUser.php
+
+add_user_error_msg			 Session
+user_name				 Form
+re_user_name				 Form
+user_password				 Form
+re_user_password			 Form

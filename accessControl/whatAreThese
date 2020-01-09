@@ -1,8 +1,9 @@
-These two files will allow us to restrict the user to pages.
+These files will allow us to restrict the user to pages.
 loggedIn will check if the user's $_SESSION['loggedIn'] is true
 if not it will redirect the user to the login page.
 
 allowedUser will check the logged in user's privilege to see if they
 are allowed to access privilege restricted content. E.X. Admin pages ...
 
-
+logout will destroy the $_SESSION['loggedIn'] variable and log the user
+out of the system

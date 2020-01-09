@@ -1,0 +1,69 @@
+Root Password : Parrots22
+
+
+#stop mysql daemon
+service mysql stop
+
+#start mysql daemon
+service mysql start
+
+#check the current status of mysql server
+mysqladmin -u root -p status
+
+#recall sql syntax is ending with ;
+
+#create a new db
+create database namegoeshere;
+
+#create new user
+create user 'usrname'@'%' identified by 'password';
+
+#grant usrname privileges on all tables in test db
+grant all on test.* to 'usrname' identified by 'password';
+
+
+#To allow the db to be accessed from outside local network
+#i.e other than 127.0.0.1 (local host)
+#
+#Disable mysql server daemon
+#edit /etc/mysql/mysql.conf.d/mysqld.cnf file
+#change bind-address to 0.0.0.0
+
+#php-mysql , which is the extension that allows php and mysql to communicate
+#with each other does not work with the native authentication method of mysql 8 Sha-2
+#Therefore it is neccessary to ensure that a users authentication plugin is set
+#to something compatible, such as mysql_native_password
+#Since user creation will happen often, it would behoove me to set this as the default 
+#plugin.
+#
+#The Mysql documentation specifies to add the following to the my.cnf file
+
+[mysqld]
+default_authentication_plugin=mysql_native_password
+
+#However this file can be located in various places, and there is hierarchy of precedence that 
+#determines which file ultimately dictates the method
+#
+#To see the order of precedence, call mysql --help
+#
+#To find which files actually exist on the server you can use the find or locate programs on the file
+#i.e.
+find my.cnf
+
+locate my.cnf
+
+#User info can be found in mysql.user table
+#user , plugin , host , authentication_string ...
+#
+
+#to drop current users from the users table
+drop user 'user'@'host';
+
+#When you change priviliges of users, you must flush the privileges for it to take affect
+flush privileges
+
+# although % allows user to connect from any host, it does not include local
+# when users are added specifies @'localhost' instead of '%' 
+
+
+

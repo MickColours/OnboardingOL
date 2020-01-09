@@ -63,19 +63,19 @@ Allowed();
 
 		$table_string .= " <td>";
 		//edit quiz form
-                $table_string .= " <form class='manageButton' action='http://54.198.147.202/quizManagement/edit/loadEditQuiz.php' method='get' name='view_quiz'> ";
+                $table_string .= " <form class='manageButton' action='/quizManagement/edit/loadEditQuiz.php' method='get' name='view_quiz'> ";
 		$table_string .= " <input id='editQuizButton' class='button' type='submit' value='Edit Quiz'/> ";
 		$table_string .= " <input type='hidden' id='inspected_quiz_name' name='inspected_quiz_name' value='" . $row['name'] . "'/>";
                 $table_string .= " <input type='hidden' id='inspected_quiz_id' name='inspected_quiz_id' value='" . $row['quiz_id']  .   "'/>";
 		$table_string .= " </form>";
 		//toggle quiz visibility, add logic, to change button value .. 
-		$table_string .= " <form class='manageButton' action='http://54.198.147.202/quizManagement/toggleQuizVisibility.php' method='get' name='view_quiz'> ";
+		$table_string .= " <form class='manageButton' action='/quizManagement/toggleQuizVisibility.php' method='get' name='view_quiz'> ";
 		$table_string .= " <input id='visibilityButton' class='button' type='submit' style='width:100px' value='Toggle Visibility'/> ";
 		$table_string .= " <input type='hidden' id='inspected_quiz_id' name='inspected_quiz_id' value='" . $row['quiz_id']  .   "'/>";
 		$table_string .= " </form>";
 
 		//remove quiz
-		$table_string .= " <form class='manageButton' action='http://54.198.147.202/quizManagement/deleteQuiz.php' method='get' name='view_quiz'> ";
+		$table_string .= " <form class='manageButton' action='/quizManagement/deleteQuiz.php' method='get' name='view_quiz'> ";
 		$table_string .= " <input id='deleteButton' class='button' type='submit' value='Delete'/> ";
 		$table_string .= " <input type='hidden' id='inspected_quiz_id' name='inspected_quiz_id' value='" . $row['quiz_id']  .   "'/>";
 		$table_string .= " </form>";

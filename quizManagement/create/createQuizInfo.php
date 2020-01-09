@@ -12,7 +12,7 @@ include '../../homepage/navBar.php';
     <div class="container" id="addQuizInfoContainer">
     <h1 id='quizInfoHeader'>Add a Quiz</h1>
 
- <form action = 'http://54.198.147.202/quizManagement/create/validateCreateQuizInfo.php'>
+ <form action = '/quizManagement/create/validateCreateQuizInfo.php'>
     <p class='info'><strong>Quiz Name: </strong> <input type='text' name='quiz_name' id='quiz_name'>   </input>  </p>
     <p class='info'><strong>Description: </strong><br>
     <textarea name='quiz_description' id='quiz_description' rows="10" cols="50" class = 'descriptionTextBox'></textarea></p>

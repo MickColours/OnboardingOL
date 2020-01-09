@@ -1,0 +1,9 @@
+These are mysql dumps, files that store information about the database
+schema.sql is a dump of all database tables and the data stored in them
+datalessSchema.sql is a dump of just the tables, no data
+routines.sql is a dump of the routines, i.e. stored procedures and functions
+user_table_dump.sql holds information about the mysql user accounts we used
+during developmnet, i.e. user, employee, and admin (mentor)
+note, that user_table_dump does not transfer grants, for this reason ther is 
+a grants directory containing mysql scripts that contain the grants for 
+each user we used during development

@@ -1,0 +1,60 @@
+Author: Matthew Keville
+
+The following assumes the endpoint is a running ubuntu server 16.04
+and is equipped with the following
+1. Apache web server
+2. PHP 7.0 or later
+3. MySql 8.0
+
+The following steps must be followed to launch the software
+
+1.
+create 3 mysql user accounts
+
+create user 'user'@'localhost' identified by 'passwordgoeshere'
+create user 'employee'@'localhost' identified by 'passwordgoeshere'
+create user 'admin'@'localhost' identified by 'passwordgoeshere'
+
+store these passwords in a secure location, you will need them later
+
+2. 
+Download all source files from github or other means.
+mv all source files in /var/www/html to the systemns /html file
+
+3. run the following sed script to replace all occurences of the development ip , with the production ip
+*note this script should be executed in the /var/www/html directory since it recursively
+replaces all occurences below the root
+find . -type f -name "*.php" -print0 | xargs -0 sed -i'' -e 's/devip/productionip/g'
+
+4.
+create a MySQL databse called 'Asrcoo'
+
+create Database Asrcoo;
+
+5.
+import the dataless schema : file located at mysqlData/datalessSchema.sql
+
+mysql -u root -p Asrcoo < datalessSchema.sql
+
+6.
+import the procedures : file located at mysqlData/routines.sql
+
+mysql -u root -p Asrcoo < routines.sql
+
+7. 
+run the grant scripts for each user account : files located at mysqlData/grants/t
+
+mysql -h localhost -u root -p Asrcoo < admin_grants.sql
+mysql -h localhost -u root -p Asrcoo < user_grants.sql
+mysql -h localhost -u root -p Asrcoo < employee_grants.sql
+
+8.
+change the passwords for the scripts in the directory connections
+that is : connectAdmin.php , connectEmployee.php, connectUser.php
+files located at:  connections/
+
+9. Change the default serviced page by apache
+
+
+
+

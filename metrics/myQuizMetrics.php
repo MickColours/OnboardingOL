@@ -54,7 +54,7 @@ Allowed();
 
 		$table_string .= " <td>";
 		//edit quiz form
-                $table_string .= " <form class='manageButton' action='http://54.198.147.202/metrics/quizMetrics.php' method='get' name='view_quiz'> ";
+                $table_string .= " <form class='manageButton' action='http://18.234.251.167/metrics/quizMetrics.php' method='get' name='view_quiz'> ";
 		$table_string .= " <input id='editQuizButton' class='button' style='width:100px;' type='submit' value='View Metrics'/> ";
 		$table_string .= " <input type='hidden' id='inspected_quiz_name' name='inspected_quiz_name' value='" . $row['name'] . "'/>";
                 $table_string .= " <input type='hidden' id='inspected_quiz_id' name='inspected_quiz_id' value='" . $row['quiz_id']  .   "'/>";

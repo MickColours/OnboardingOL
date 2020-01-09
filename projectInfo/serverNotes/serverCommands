@@ -1,0 +1,8 @@
+Check what services are being provided from network view
+>sudo netsat -antp
+
+Stop apache service
+>sudo service apache2 stop
+
+Start apache
+>sudo service apache2 start

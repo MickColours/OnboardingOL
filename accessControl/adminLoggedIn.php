@@ -1,8 +1,8 @@
 <?php
 //The purpose of this function is to 
-//Check to make sure the user logged in
-//is an admin so users without the correct
-//priveleges cannot access admin pages
+//Check to make sure if the user who logged in
+//is an mentor so users without the correct
+//priveleges cannot access mentor pages
 
 function Admin(){
 	session_start();
@@ -10,11 +10,10 @@ function Admin(){
 
 	if ($user_privilege == 2){
 		//Do nothing
-		//The user already
-		//has the correct permissions
+		//The user already has the correct permissions
 	}else{
 		//user is sent back to the homepage 
-		header("Location: http://54.198.147.202/homepage/homepage.php");
+		header("Location: ../homepage/homepage.php");
 	}
   }
 ?>

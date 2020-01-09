@@ -44,7 +44,7 @@ to this page as mentioned below.
     <input id="submitButton" class='button' type="submit" value="Create User"/>
     </form>
 
-     <form action='http://54.198.147.202/homepage/homepage.php'> 
+     <form action='/homepage/homepage.php'> 
     <input id="cancelButton" class='button' type="submit" value="Cancel"/>
      </form>
  </div>

@@ -1,0 +1,13 @@
+Web server is located at, /var/www/
+
+I changed the default landing page for the apache webserver.
+By default apache2 servers index.html, but we want it to service index.ph
+to achieve this result we edit the config file at
+/etc/apache2/mods-enable/dir.conf
+we place index.php before index.html
+
+
+I changed the default serviced file to login.php (instead of index.php) to remove code duplcation and confusion.
+
+
+

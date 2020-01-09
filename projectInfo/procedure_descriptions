@@ -1,0 +1,129 @@
+WARNING ALL PROCEDURES RETURN A DATAMATRIX , I.E. A 2D ARRAY
+EVEN IF THEY PRACTICALLY RETURN A SCALAR
+INDEX THE RESULTS WITH THIS IN MIND
+
+ALL PROCEDURE CALLS MUST BY PREFIXED WITH Asrcoo.
+
+Ex. call Asrcoo.delete_user(user_id);
+_________
+PROCEDURES
+__________
+
+add_quiz(author_id, time_limit, name, description)
+
+add_quizQuestion(quiz_id, question_text, point_value, DTYPE)
+
+add_textAnswer(question_id, answer_text, validity)
+
+add_user(username,password,privilege)
+
+	username is the truncated email
+	password is ...
+	privilege is (1 or 2) 2 is admin 
+
+
+	*used in the validateCreateUser
+	
+delete_quiz(quiz_id)
+
+delete_textAnswers(answerList)
+
+delete_textQuestion(question_id)
+
+delete_user(user_id)
+
+	delete a user from the database
+
+	*used in the delete user pages
+
+edit_quiz_detail(quiz_id, name, description, time_limit)
+
+get_possible_textAnswers(question_id)
+	return a datamatrix for a textQuestions potential answers
+	valid only for textQuestions which are  Multiple choice or SATA
+	rows correspond 2-tuples
+	the 2-tuples are formatted (textAnswer_id , answer_text)
+
+	*to be used in take quiz pages
+
+get_correct_textAnswers_procedure(question_id)
+	return a datamatrix of a textQuestions correct answer set
+	the rows correspond to 2-tupes which are formatted (textAnswer_id, answer_text)
+	
+get_quiz_detail(quiz_id)
+
+	return detailed view of a particular quiz
+
+	*to be used for prequiz page
+	**edit added subjects column
+
+get_quiz_questions(quiz_id)
+	return a datamatrix for a particular quiz
+	rows correspond to 5-tuples (question_id ,question_text, question_type,point_value,order) 
+	
+	*to be used for takequiz pages / pre quiz pages
+	*to be used for edit / create quiz pages 
+
+get_top_user_performances(user_id)
+
+get_user_id(user_name)
+
+get_user_privilege(user_id)
+	return the user privilege
+	either (1 or 2) = (employee or admin)
+
+	*used after users are logged in to determine whether or not 
+	they are allowed access to certain pages, or displayed admin links
+
+get_authentication_string(username)
+	return the hash of the salted password
+	that corresponds to the unique user 
+	with the username provided
+
+
+
+grade_fixed_textQuestion(question_id,answer_string)
+	a fixed textQuestion is a textQuestion with
+	a finite number of possible answers. This designates
+	multiple choice and select all that apply.
+
+	The function paramaters are the question_id to be graded
+	and a string of answer id's that are ordered numerically
+	and are comma seperated.
+
+	The above conditions are important because it allows
+	this procedure to grade both multiple choice and sata questions
+	
+	the procedure returns either (0 | question point value)
+	*remember, although this returns a scalar , its really .. a datamatrix
+
+grade_unfixed_textQuestion(question_id, answer_string)
+
+add_performance(grade,quiz_id,user_id,duration_in_minutes)
+	insert a row into the performance table
+	with the specified data,
+	the procedure will pump the current date 
+	into the row
+
+
+list_visible_quizzes()
+	return a datamatrix of all quizzes with the visible flag set
+	and some prelimnary information about them
+	rows are 4-tuples (quiz_id , name , author , date_created)
+
+	*used in the take a quiz page
+
+
+list_user_quizzes(user_id)
+	return a datamatrix of all quizzes that belong
+	to the user id provided
+	*rows returned are 4-tuples (quiz_id , name , date_created, visibility)
+
+get_top_user_performances(user_id)
+	returns a datamatrix
+	of 4-tuples (name ,grade, duration_in_minutes, date_taken)
+
+
+
+
+

@@ -22,7 +22,7 @@ Allowed();
       <!-- creates a table that will display a list of quizzes to be edited
            each entry will contain a button which redirects to quiz editing -->
 
-    <form action = 'http://54.198.147.202/quizManagement/subjects/createSubject.php'>
+    <form action = '/quizManagement/subjects/createSubject.php'>
       <input id='createQuizButton' class='button' style="width:90%; text-align:center; margin:0px; padding:10px 0px;position:relative;left:5%;" type='submit' value='Create'/>
     </form>
     <br>
@@ -59,7 +59,7 @@ Allowed();
 
                         //delete subject
                         $tablestring .= " <td>";
-                        $tablestring .= " <form class='manageButton' action='http://54.198.147.202/quizManagement/subjects/deleteSubject.php' method='get' name='view_subject'> ";
+                        $tablestring .= " <form class='manageButton' action='http://18.234.251.167/quizManagement/subjects/deleteSubject.php' method='get' name='view_subject'> ";
                         $tablestring .= " <input id='deleteButton' class='button' type='submit' value='Delete'/> ";
                         $tablestring .= " <input type='hidden' id='inspected_subject_id' name='inspected_subject_id' value='" . $row['subject_id']  .   "'/>";
 			$tablestring .= " <input type='hidden' id='inspected_subject_name' name='inspected_subject_name' value='" . $row['name']  .   "'/>";

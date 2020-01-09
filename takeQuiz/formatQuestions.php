@@ -30,7 +30,7 @@ function formatTextAnswers($question_row) {
  $ans = $dbh->prepare($query_answers);
  $ans->execute();
  
- $possible_answer_string = " <div class='questionContainer'>\n";
+ $possible_answer_string = " <div class='answerContainer'>\n";
  $possible_answer_string .= "<form action='gradeQuestion.php' method='get' name='answerBox'>";
 
  if($question_row['question_type'] == 'textMC'){

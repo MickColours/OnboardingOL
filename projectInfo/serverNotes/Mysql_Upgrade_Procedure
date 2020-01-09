@@ -1,0 +1,28 @@
+Roles were introduced in mySQL and amazon EC2 Ubuntu 16 instances came with
+mySQL 5.4
+
+As a result it was necessary to uninstall mysql5.4 server and client
+
+>sudo apt-get remove --purge mysql-common* mysql-client* mysql-server*
+
+
+Add MYSQL APT repository
+>wget https://dev.mysql.com/get/mysql-apt-config_0.8.10-1_all.deb
+
+>dpkg -i mysql-apt-config_0.8.10-1_all.deb
+
+Then update the repo, however on ubuntu 16.04 the key for updating mysql is expired and needed to
+be replaced
+
+To show expired keys
+
+>sudo apt-key list
+
+To update expired keys
+
+>apt-key adv --keyserver keys.gnupg.net --recv-keys keygoeshers
+
+To install mysql server and client
+
+>sudo apt install mysql-server mysql-client
+

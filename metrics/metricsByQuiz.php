@@ -12,7 +12,7 @@ include '../homepage/navBar.php'
       <h1 id="tableHeading">Quiz Metrics</h1>
       <!-- creates a table that will display a list of quizzes that can be taken -->
       <!-- each entry will contain a button that will redirect to a preQuiz screen for that quiz -->
-      <table class="displayTable" id="quizTable">
+      <table class="displayTable" id="metricsTable">
         <tr id="headerRow"> 
 	  <th style="width:40%;">Quiz Name</th>
 	  <th style="width:20%;">Quiz Author</th>
@@ -69,7 +69,7 @@ include '../homepage/navBar.php'
       var input, filter, table, tr, td, i, txtValue;
       input = document.getElementById("searchBox");
       filter = input.value.toUpperCase();
-      table = document.getElementById("quizTable");
+      table = document.getElementById("metricsTable");
       tr = table.getElementsByTagName("tr");
 
       // Loop through all table rows, and hide those who don't match the search query

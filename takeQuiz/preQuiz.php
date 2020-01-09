@@ -64,7 +64,7 @@ foreach($sth->fetchAll() as $row){
         $info_string .= "<p class='info'><strong>Subjects: </strong>" . $row['subjects'] ."</p>\n";
         $info_string .= "</div>\n";
 	$info_string .= " <br>";
-        $info_string .= " <form action='http://54.198.147.202/takeQuiz/loadQuiz.php' method='get' name='view_quiz'> ";
+        $info_string .= " <form action='/takeQuiz/loadQuiz.php' method='get' name='view_quiz'> ";
 	$info_string .= " <input id='submitButton' class='button' type='submit' value='Take Quiz'/> ";
 
 	$info_string .= " <input type='hidden' id='inspected_quiz_name' name='inspected_quiz_name' value='" . $row['name'] . "'/>";
@@ -95,7 +95,7 @@ echo $info_string;
 -->
 
       
-      <form action='http://54.198.147.202/takeQuiz/takeQuiz.php'>
+      <form action='/takeQuiz/takeQuiz.php'>
       <input id = "cancelButton" class='button' type="submit" value="Cancel"/>
       </form>
     </div>

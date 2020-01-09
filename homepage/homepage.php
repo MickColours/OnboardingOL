@@ -70,16 +70,16 @@ include '../homepage/navBar.php';
       <p id="tableSideText">Check out the most popular quizzes right now!</p><br><br><br><br><br><br>
       <p id="tableSideText">Also, check out some of these interesting facts!</p>
     </div>
-    <div class="metricsSection" id="topQuizSection">
-      <table class="topQuizzes" id="label">
+    <div class="metricsSection">
+      <table class="metricsTable" id="label">
         <tr>
-          <th class="topQuizData">Most Popular Quizzes</th>
+          <th class="metricsData">Most Popular Quizzes</th>
         </tr>
       </table>
-      <table class="topQuizzes">
+      <table class="metricsTable">
 	<tr>
-	  <th class="topQuizData">Quiz Name</th>
-	  <th class="topQuizData"># of Attempts</th>
+	  <th class="metricsData">Quiz Name</th>
+	  <th class="metricsData"># of Attempts</th>
 	</tr>
 <?php
     include '../connections/connectEmployee.php';
@@ -102,12 +102,12 @@ include '../homepage/navBar.php';
 
       </table>
       <br><br>
-      <table class="topQuizzes" id="label">
+      <table class="metricsTable" id="label">
         <tr>
-          <th class="topQuizData">Total Time Spent Taking Quizzes In Minutes</th>
+          <th class="metricsData">Total Time Spent Taking Quizzes In Minutes</th>
         </tr>
       </table>
-      <table class="topQuizzes">
+      <table class="metricsTable">
 <?php
     $dbh1 = connectEmployee();
     $query_string1 = "call Asrcoo.get_total_time_spent();";
@@ -125,12 +125,12 @@ include '../homepage/navBar.php';
       </table>
       <br><br>
 
-      <table class="topQuizzes" id="label">
+      <table class="metricsTable" id="label">
         <tr>
-          <th class="topQuizData">Total Quiz Attempts</th>
+          <th class="metricsData">Total Quiz Attempts</th>
         </tr>
       </table>
-      <table class="topQuizzes">
+      <table class="metricsTable">
 <?php
     $dbh = connectEmployee();
     $query_string = "call Asrcoo.get_total_attempts();";
@@ -148,15 +148,15 @@ include '../homepage/navBar.php';
       </table>
       <br><br>
 
-      <table class="topQuizzes" id="label">
+      <table class="metricsTable" id="label">
         <tr>
-          <th class="topQuizData">Top 3 Subjects</th>
+          <th class="metricsData">Top 3 Subjects</th>
         </tr>
       </table>
-      <table class="topQuizzes">
+      <table class="metricsTable">
 	<tr>
-	  <th class="topQuizData">Subject Name</th>
-	  <th class="topQuizData"># of Attempts</th>
+	  <th class="metricsData">Subject Name</th>
+	  <th class="metricsData"># of Attempts</th>
 	</tr>
 <?php
     $dbh = connectEmployee();

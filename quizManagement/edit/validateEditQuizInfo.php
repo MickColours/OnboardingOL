@@ -25,7 +25,7 @@ $sth->bindParam(':tim', $time_limit, PDO::PARAM_INT);
 $sth->execute();
 
 //return to editQuizOverview
-header("Location: http://54.198.147.202/quizManagement/edit/editQuizOverview.php");
+header("Location: /quizManagement/edit/editQuizOverview.php");
 
 ?>
 
